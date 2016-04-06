@@ -1,25 +1,68 @@
-<p id="notice"><%= notice %></p>
+<% if user_signed_in? %>
 
-<h1>Listing Links</h1>
+<header id="top_header" class="clearfix">
 
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <div class="wrapper">
 
-  <tbody>
-    <% @links.each do |link| %>
-      <tr>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+    <h1 class="logo">Nested</h1>
+    <nav id="main_nav">
+      <%= link_to 'New', new_link_path %> |
+      <%= link_to "home", root_path %> | 
+      <%= link_to "sign out", destroy_user_session_path, :method => :delete %> 
+    </nav>
+  </div>
+  </header>
 
-<br>
+  <section id="banner" class="clearfix">
+    
+    <div id="banner_content_wrapper">
+      <div id="preview">
+        <iframe src="http://fortawesome.github.io/Font-Awesome/icons/"></iframe>
+      </div>
+      <div id="content">
+        <p class="code">@<span>100010</span></p>
+        <p class="title">Font Awesome Website</p><br>
+      
+        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><br>
 
-<%= link_to 'New Link', new_link_path %>
+        <p class="info">meta info<span>|</span> meta info<span>|</span>meta info<span>|</span>meta info<span>|</span></p>
+
+      </div>
+    </div>
+
+  </section>
+
+  <section class="nest_links">
+    <div class="wrapper">
+      <header class="clearfix">
+        <h2><%= current_user.name %> Links</h2>
+
+        <div class="row">
+          <% @links.each do |link| %>
+            <div class="user-link">
+                
+                <div class="clearfix">
+                  <div id="link-title"><%= link.title %></div>
+                  <div id="link-code">@<%= link.code %>
+                  </div>
+                </div>
+                <br>
+                <a href="<%=link.link %>" id="link"><%= link.link %></a><br>
+                <p id="info"><%= link_to 'Show', link %> | <%= link_to 'Edit', edit_link_path(link) %> | <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+              <br>
+              
+            </div>
+
+          <% end %>
+        </div>
+      </header>
+    </div>
+  </section>
+
+
+
+<% else %>
+    
+  <% controller.redirect_to new_user_session_path %>
+
+<% end %>

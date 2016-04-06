@@ -1,0 +1,36 @@
+
+<div class="fetch-bg">
+	<div class="fetch-wrapper">
+
+		<div id="logo">Nested</div>
+
+		<div id="title">SUPER EASY LINKS</div>
+		
+
+		<div class="nest-count">example <n>{</n> 100001 <n>}</n></div>
+		
+		<div class="fetch-form">
+
+			<%= form_tag(root_path, :method => "get", id: "search-form") do %>
+		
+			<div class="nest"><n>{  </n>
+				<%= text_field_tag :search, params[:search], placeholder: "enter code here", :required => true, oninvalid: "this.setCustomValidity('Please enter a Nested code')", oninput: "setCustomValidity('')"  %><n>  }</n>
+			</div>
+    	
+  		<br>
+			<%= submit_tag "GO!" %>
+			<% end %>
+			 
+		</div>
+			<div class="mylinks">
+			<% if user_signed_in? %>
+				<%= link_to links_path do %>
+				<div>To <%= current_user.name %>'s Nest</div>
+				<% end %>
+			<% else %>
+				<%= link_to "Sign in", new_user_session_path %> |
+				<%= link_to "Create your own nest", new_user_registration_path %>
+			<% end %>
+		</div>
+	</div>
+</div>

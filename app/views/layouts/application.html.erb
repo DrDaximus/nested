@@ -5,10 +5,22 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
 </head>
 <body>
+
+	<% if notice %>
+    <div class="banner_alert alert-success" id="notice">
+      <%= notice %>
+    </div>
+  <% elsif alert %>
+    <div class="banner_alert alert-danger" id="alert">
+      <%= alert %>
+    </div>
+  <% end %>
 
 <%= yield %>
 
 </body>
 </html>
+

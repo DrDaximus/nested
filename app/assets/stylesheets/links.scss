@@ -1,3 +1,136 @@
 // Place all the styles related to the links controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$welcomeBg: #ED5747;
+$welcomeBgHighlight: #EC6657;
+$welcomeLogo: #fff;
+$welcomeTitle: #616161;
+$welcomeButton: #9ED561;
+$lightgrey: #D3D3D3;
+$linkHighlight: #616161;
+$white: #fff;
+
+* {
+	box-sizing: border-box;
+}
+
+.wrapper {
+	width: 1440px;
+	max-width: 90%;
+	margin: 0 auto;
+}
+
+h1, h2{
+	font-weight: 700;
+}
+
+#top_header {
+	padding: 1.5em 0;
+	background: $welcomeBg;
+	font-family: 'Lilita One', cursive;
+	.logo {
+		color: $white;
+		float: left;
+		font-size: 2em;
+		n {
+			font-size: 0.5em;
+			color: $lightgrey;
+		}
+	}
+	#main_nav {
+		color: $white;
+		float: right;
+		font-size: 1.2em;
+		padding-top: 0.4em;
+		a {
+			color: $white;
+			&:hover {
+				color: $linkHighlight;
+			}
+		}
+	}
+}
+
+#banner {
+	background-image: image-url("TreeBirds.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	padding: 3em 0;
+	#banner_content_wrapper {
+		width: 950px;
+		max-width: 90%;
+		margin: 0 auto;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+	#preview {
+		width:45%;
+		iframe {
+			border-radius: .5em;
+			border: 2px solid $white;
+			background: rgba(255,255,255,0.6);
+			width: 100%;
+			height: 250px;
+		}
+	}
+	#content {
+		width: 400px;
+		float: left;
+		margin-left: 50px;
+		color: $white;
+		.code {
+			font-weight: 700;
+			font-size: 2em;
+			span {
+			font-family: 'Lilita One', cursive;
+			}
+		}
+		.title {
+			color: $linkHighlight;
+			font-weight: 700;
+			font-size: 1.1em;
+			padding: 1em 0 0 0;
+		}
+		.description {
+			color: $linkHighlight;
+			font-weight: 400;
+			font-size: 1em;
+		}
+		.info {
+			font-weight: 700;
+			font-size: 1em;
+			margin-top: 1em;
+			span {
+				margin: 0 .5em;
+			}
+		}
+	}
+}
+
+.row {
+	padding: 10px 0;
+	width: 100%;
+	.user-link {
+		height: 150px;
+		width: 30%;
+		float: left;
+		margin: 10px 1.6%;
+		padding: 1em;
+		border: 2px solid $linkHighlight;
+		border-radius: 15px;
+		#link-title {
+			color: $linkHighlight;
+			font-weight: 700;
+			float:left;
+		}
+		#link {
+			font-size: 0.8em;
+		}
+		#link-code {
+			font-weight: 700;
+			float:right;
+		}
+	}
+}

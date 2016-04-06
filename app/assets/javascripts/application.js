@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require ahoy
 
 $(document).on('page:change', function() {	
 

@@ -35,7 +35,7 @@
   <section class="nest_links">
     <div class="wrapper">
       <header class="clearfix">
-        <h2><%= current_user.name %> Links</h2>
+        <h2><%= current_user.name %>'s Links</h2>
 
         <div class="row">
           <% @links.each do |link| %>
@@ -47,6 +47,7 @@
                   </div>
                 </div>
                 <br>
+                <p>Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%></p>
                 <a href="<%=link.link %>" id="link"><%= link.link %></a><br>
                 <p id="info"><%= link_to 'Show', link %> | <%= link_to 'Edit', edit_link_path(link) %> | <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></p>
               <br>

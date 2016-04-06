@@ -5,6 +5,7 @@ class WelcomeController < ApplicationController
     if !params[:search].blank?
       @link = Link.search(params[:search]).limit(1)
       if @link.count == 1
+        ahoy.track "Viewed link", @link.first.id
       	params[:search] = ""
         @url = @link.first.link
         redirect_to @url

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :links
+  resources :links do
+    member do
+      get 'preview_link'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

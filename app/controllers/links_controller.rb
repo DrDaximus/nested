@@ -1,6 +1,6 @@
 class LinksController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_link, only: [:show, :edit, :update, :destroy]
+  before_action :set_link, only: [:clicked_links, :show, :edit, :update, :destroy]
 
   # GET /links
   # GET /links.json
@@ -10,12 +10,18 @@ class LinksController < ApplicationController
     #@page = MetaInspector.new(@link.link)
   end
 
+  def preview_link
+    @link = Link.find(params[:format])  
+    @page = MetaInspector.new(@link.link)
+   
+  end
+
   # GET /links/1
   # GET /links/1.json
   def show
     @page = MetaInspector.new(@link.link)
   end
-
+  
   # GET /links/new
   def new
     @link = current_user.links.new

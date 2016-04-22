@@ -5,23 +5,23 @@
 		<div id="logo">Nested</div>
 
 		<div id="title">SUPER EASY LINKS</div>
-		
-
-		<div class="nest-count">example @100001</div>
-		
-		<div class="fetch-form">
 
 			<%= form_tag(root_path, :method => "get", id: "search-form") do %>
 		
-			<div class="nest"><n>@  </n>
-				<%= text_field_tag :search, params[:search], placeholder: "enter code here", :required => true, oninvalid: "this.setCustomValidity('Please enter a Nested code')", oninput: "setCustomValidity('')"  %><n>    .</n>
-			</div>
+				<div class="form-group">
+					<div class="input-group">
+					<div class="input-group-addon">@</div>
+						<%= text_field_tag :search, params[:search], placeholder: "enter code here", :required => true, oninvalid: "this.setCustomValidity('Please enter a Nested code')", oninput: "setCustomValidity('')", class: "form-control code-input"  %>
+					</div>
+				</div>			
     	
   		<br>
-			<%= submit_tag "GO!" %>
+
+			<%= submit_tag "Go!", class: "submit-code-btn" %>
+		
 			<% end %>
 			 
-		</div>
+		
 			<div class="mylinks">
 			<% if user_signed_in? %>
 				<%= link_to links_path do %>

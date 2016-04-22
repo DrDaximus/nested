@@ -17,6 +17,12 @@ gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
+gem "chartkick"
+
+gem 'dateslices'
+
+gem 'morrisjs-rails'
+gem 'raphael-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

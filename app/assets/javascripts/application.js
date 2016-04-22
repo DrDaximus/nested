@@ -18,12 +18,18 @@
 
 $(document).on('page:change', function() {	
 
-	$('.alert-success, .alert-danger').hide(); 
-	$('.alert-success, .alert-danger').slideDown( "slow", function(){ });
+	$('#notice, #alert').hide(); 
+	$('#notice, #alert').slideDown( "slow", function(){ });
 
 	setTimeout(function() {
-		$('.alert-success, .alert-danger' ).slideUp("slow", function() {
+		$('#notice, #alert' ).slideUp("slow", function() {
 			$(this).remove();
 		})
 	}, 4500);
 });
+
+//$(document).ready(function(){
+//  $('.user-link').hover(function(){
+//    $('#remote_preview_link').trigger('click');
+//  });
+//});

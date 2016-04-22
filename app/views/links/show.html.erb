@@ -1,28 +1,24 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Code:</strong>
-  <%= @link.code %>
-</p>
+<section id="graph-section" class="clearfix">
 
-<p>
-  <strong>Your Title:</strong>
-  <%= @link.title %>
-</p>
-<img src="<%= favicon_show(@link) %>"></img><br>
-<p><strong>Author Title:</strong> <%= @page.best_title %> </p>
-<p><strong>Description:</strong> <%= @page.description %> </p>
-<p><strong>Author:</strong> <%= @page.meta_tag['name']['author']   %> </p>
-<p><strong>Type:</strong> <%= @page.meta_tag['name']['og:type']   %> </p>
-<p><strong>Host:</strong> www.<%= @page.host  %> </p>
-<p><strong>Keywords:</strong> <%= @page.meta_tag['name']['keywords']   %> </p>
+	<h1><%= pluralize(Ahoy::Event.where(properties: @link.id).count, 'unique view')%>  for @<%= @link.code %></h1>
+	<h2><%= @link.title %></h2>	
+	<%= line_chart Ahoy::Event.where(properties: @link.id).group_by_day( :time, "count" ), id: "clicks-chart", label: "Clicks", colors: ["#ED5747"] %>
 
-<p>
-  <strong>Link:</strong>
-  <a href="<%=@link.link %>"> <%= @link.link %></a>
-</p>
+</section>
 
-<iframe src="<%= @link.link %>"></iframe>
+<section id="view-section">
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+	<div id="show-link">
+		<strong>Link:</strong><a href="<%=@link.link %>"> <%= @link.link %></a>
+	</div>
+	
+	<iframe id="link-view" src="<%= @link.link %>">No View Available for this address.</iframe>
+
+</section>
+
+<footer class="page-links">
+	<%= link_to 'Back', links_path %> |
+	<%= link_to 'New Link', new_link_path %> |
+	<%= link_to 'Edit Link', edit_link_path(@link) %>
+</footer>	

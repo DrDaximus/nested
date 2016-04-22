@@ -1,60 +1,64 @@
 <% if user_signed_in? %>
 
-<header id="top_header" class="clearfix">
-
-  <div class="wrapper">
-
-    <h1 class="logo">Nested</h1>
-    <nav id="main_nav">
-      <%= link_to 'New', new_link_path %> |
-      <%= link_to "home", root_path %> | 
-      <%= link_to "sign out", destroy_user_session_path, :method => :delete %> 
-    </nav>
-  </div>
-  </header>
-
   <section id="banner" class="clearfix">
+
+  <div id="link-preview"><pretitle>Nested</pretitle></div>
     
-    <div id="banner_content_wrapper">
-      <div id="preview">
-        <iframe src="http://fortawesome.github.io/Font-Awesome/icons/"></iframe>
-      </div>
-      <div id="content">
-        <p class="code">@<span>100010</span></p>
-        <p class="title">Font Awesome Website</p><br>
-      
-        <p class="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p><br>
-
-        <p class="info">meta info<span>|</span> meta info<span>|</span>meta info<span>|</span>meta info<span>|</span></p>
-
-      </div>
-    </div>
-
   </section>
 
-  <section class="nest_links">
-    <div class="wrapper">
+  <section id="nested_links">
+    <div>
       <header class="clearfix">
-        <h2><%= current_user.name %>'s Links</h2>
+        <div id="nest-title"><%= current_user.name %>'s Nest</div>
 
         <div class="row">
-          <% @links.each do |link| %>
-            <div class="user-link">
-                
+        <div class="col-md-12">
+          <% @links.order(:code).each do |link| %>
+
+              <div class="user-link">  
                 <div class="clearfix">
-                  <div id="link-title"><img src="<%= favicon_show(link) %>"></img> <%= link.title %></div>
-                  <div id="link-code">@<%= link.code %>
-                  </div>
+
+                  <%= link_to preview_link_link_path(:id, link.id), id:"remote_preview_link", :remote => true do %>
+
+                    <div id="container-link-title" title="Show details"><img src="<%= favicon_show(link) %>"></img> <%= link.title %></div>
+
+                  <% end %>
+                  
+                  <%= link_to link.link do %>
+
+                    <div id="container-link-code" title="Visit link"><i class="fa fa-at"></i><%= link.code %></div>
+
+                  <% end %>
+
                 </div>
-                <br>
-                <p>Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%></p>
-                <a href="<%=link.link %>" id="link"><%= link.link %></a><br>
-                <p id="info"><%= link_to 'Show', link %> | <%= link_to 'Edit', edit_link_path(link) %> | <%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-              <br>
+                
+                <div id="container-view-count" >Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%>
+                <p><small>created: <%= l(link.created_at, format: :short) %></small></p>
+                </div>
               
-            </div>
+                <div id="container-link"><a href="<%=link.link %>"><%= link.link %></a></div>
+
+                <div id="conatiner-links">
+
+                  <%= link_to preview_link_link_path(:id, link.id), id:"remote_preview_link", :remote => true do %>
+                    <i class="fa fa-info-circle fa-lg" title="Show details"></i>
+                  <% end %>|
+                  <%= link_to link do %>
+                    <i class="fa fa-line-chart fa-lg" title="Link stats"></i>
+                  <% end %>|
+                  <%= link_to edit_link_path(link) do%> 
+                    <i class="fa fa-tags fa-lg" title="Edit link"></i>
+                  <% end %>|
+                  <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+                    <i class="fa fa-trash fa-lg" title="Delete link"></i>
+                  <% end %>
+
+                </div>
+              
+              </div>
 
           <% end %>
+          </div>
         </div>
       </header>
     </div>
@@ -67,3 +71,9 @@
   <% controller.redirect_to new_user_session_path %>
 
 <% end %>
+
+<div class="page-links">
+  <%= link_to new_link_path, title: "Create a new link" do %>
+    Create New Link
+  <% end %>
+</div>

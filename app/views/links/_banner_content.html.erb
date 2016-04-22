@@ -1,0 +1,16 @@
+<div id="banner_content_wrapper">
+      <div id="preview">
+  <%= line_chart Ahoy::Event.where(properties: @link.id).group_by_day( :time, "count" ), title: "Clicks",  id: "clicks-chart", label: "Clicks", colors: ["#ED5747"], height: "290px"%>
+      </div>
+      <div id="content">
+        <p class="code">@<span><%= @link.code %></span></p>
+        <p class="title"><%= @link.title %></p><br>
+      
+        <p class="description"><%= @page.description %> </p><br>
+
+        <p class="info">Viewed <%= pluralize(Ahoy::Event.where(properties: @link.id).count, 'time')%><span>|</span> www.<%= @page.host  %> <span></p>
+        <p><strong>Keywords:</strong> <%= @page.meta_tag['name']['keywords'] %> </p>
+
+      </div>
+    </div>
+

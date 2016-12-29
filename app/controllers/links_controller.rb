@@ -22,6 +22,9 @@ class LinksController < ApplicationController
   
   # GET /links/new
   def new
+    @code = Code.where(available: true).first
+    @code.available = false
+    @code.save
     @link = current_user.links.new
   end
 
@@ -33,9 +36,10 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.new(link_params)
-
+  
     respond_to do |format|
-      if @link.save
+      if @link.save 
+        subscribe(@link)
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
       else
@@ -70,6 +74,39 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def subscribe(link)
+      case link.subscribe_opt
+      when 0
+        link.expires = Time.now + 24.hours
+        init_subscription("NestBasic")
+      when 1
+        link.expires = Time.now + 1.week
+        init_subscription("NestWeekCode")
+      when 2
+        link.expires = Time.now + 1.month
+        init_subscription("NestMonthCode")
+      when 3
+        link.expires = Time.now + 1.year
+        init_subscription("NestYearCode")
+      end
+      link.save
+    end
+
+    def init_subscription(plan)
+      unless current_user.subscribed
+        customer = Stripe::Customer.create(:email => current_user.email)
+        customer_id = customer.id
+        current_user.subscribed = true 
+        current_user.stripeid = customer_id
+        current_user.save 
+      else
+        customer_id = current_user.stripeid
+      end
+      Stripe::Subscription.create(:customer => customer_id, :plan => plan, :metadata => {"code" => @link.code})
+      
+    end
+
     # Use callbacks to share common setup or constraints between actions.
     def set_link
       @link = Link.find(params[:id])
@@ -77,6 +114,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :link, :code, :code_id, :goal)
+      params.require(:link).permit(:title, :link, :code, :code_id, :goal, :subscribe_opt)
     end
 end

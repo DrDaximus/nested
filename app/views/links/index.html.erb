@@ -7,11 +7,11 @@
 
 
   <% @links.order(:code).each do |link| %>
-  <div class="link-item <% link_status(link)%> ">
+  <div class="link-item <%=link_status(link)%>">
     <div class="row">
       <div class="col-xs-1 link-icon"><div class="circle"><i class="fa fa-clock-o fa-lg" title="Edit link"></i></div></div>
-      <div class="col-xs-7 link-title"><%= link.title %></div>
-      <div class="col-xs-4 link-code">@<%= link.code %></div>
+      <div class="col-xs-8 link-title"><%= link.title %></div>
+      <div class="col-xs-3 link-code">@<%= link.code %></div>
     </div>
   </div>
   <div class="link-details">

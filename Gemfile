@@ -9,7 +9,7 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
-
+gem 'stripe'
 gem 'devise'
 gem 'metainspector'
 gem "default_value_for", "~> 3.0.0"

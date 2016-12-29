@@ -1,13 +1,14 @@
 module LinksHelper
 
 	def link_status(link)
-		if link.expires <= Time.now
-			return "expired"
-		elsif (link.expires - Time.now) <= 24
-			return "ending"
-		else 
-			return "active"
-		end
+		#if link.expires <= Time.now
+			#return "expired"
+		#elsif (link.expires - Time.now) <= 24
+			#return "ending"
+		#else 
+			#return "active"
+		#end
+		return "active"
 	end
 
 	def favicon_show(url)

@@ -10,10 +10,18 @@
       </ul>
     </div>
   <% end %>
+  
+   <%= f.hidden_field :subscribe_opt %>
+   <%= f.hidden_field :code, value: @code.code if @code %>
+
+  <div class="field">
+    <%= f.label :subscribe_opt, value: "Subscription" %><br>
+    <%= f.text_field :subscribe_opt %>
+  </div>
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title, :maxlength => 20 %>
+    <%= f.text_field :title, :maxlength => 35 %>
   </div>
   <div class="field">
     <%= f.label :link %><br>
@@ -24,9 +32,7 @@
     <%= f.text_field :goal %>
   </div>
   <% if current_page?(controller: 'links', action: 'new') %>
-    <div class="field">
-      <%= f.collection_select :code, Code.unused_codes, :code, :code, {prompt: "Select your code"} %>
-    </div>
+   Code: <%= @code.code %>
   <% else %>
     <iframe src="<%= @link.link %>"></iframe>
   <% end %>

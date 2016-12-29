@@ -6,5 +6,7 @@ module Ahoy
     belongs_to :user
 
     serialize :properties, JSON
+
+
   end
 end

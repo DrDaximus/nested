@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require raphael
+//= require morris
 //= require_tree .
 //= require ahoy
 
@@ -27,9 +29,3 @@ $(document).on('page:change', function() {
 		})
 	}, 4500);
 });
-
-//$(document).ready(function(){
-//  $('.user-link').hover(function(){
-//    $('#remote_preview_link').trigger('click');
-//  });
-//});

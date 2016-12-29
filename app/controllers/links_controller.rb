@@ -6,20 +6,18 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = current_user.links.all
-    #@link = ""
-    #@page = MetaInspector.new(@link.link)
   end
 
   def preview_link
     @link = Link.find(params[:format])  
     @page = MetaInspector.new(@link.link)
-   
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
     @page = MetaInspector.new(@link.link)
+    @clicks = Ahoy::Event.where(properties: @link.id)
   end
   
   # GET /links/new
@@ -79,6 +77,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :link, :code, :code_id)
+      params.require(:link).permit(:title, :link, :code, :code_id, :goal)
     end
 end

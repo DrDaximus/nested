@@ -3,17 +3,25 @@
 
 	<h1><%= pluralize(Ahoy::Event.where(properties: @link.id).count, 'unique view')%>  for @<%= @link.code %></h1>
 	<h2><%= @link.title %></h2>	
-	<%= line_chart Ahoy::Event.where(properties: @link.id).group_by_day( :time, "count" ), id: "clicks-chart", label: "Clicks", colors: ["#ED5747"] %>
+
+	<% if @link.goal <= Ahoy::Event.where(properties: @link.id).count && @link.goal != 0%>
+		<div class="goal-achieved"></div>
+	<% end %>
+
+	<div class="goals">
+	<div id="goal-actual">Current</div>
+	<% if @link.goal != 0 %>
+	<div id="goal-expected">Goal (<%= @link.goal%>)</div>
+	<% end %>
+	</div>
+
+	<%= content_tag :div, "", id: "clicks_chart", data: {clicks: clicks_chart_data, total: total_clicks, goal: goal_clicks} %>
 
 </section>
 
-<section id="view-section">
+<section id="analytics-section">
 
-	<div id="show-link">
-		<strong>Link:</strong><a href="<%=@link.link %>"> <%= @link.link %></a>
-	</div>
-	
-	<iframe id="link-view" src="<%= @link.link %>">No View Available for this address.</iframe>
+	<%= content_tag :div, "", id: "target_chart", data: {clicks: clicks_chart_data} %>
 
 </section>
 

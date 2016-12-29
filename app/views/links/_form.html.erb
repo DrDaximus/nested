@@ -19,6 +19,10 @@
     <%= f.label :link %><br>
     <%= f.url_field :link %>
   </div>
+  <div class="field">
+    <%= f.label :goal %><br>
+    <%= f.text_field :goal %>
+  </div>
   <% if current_page?(controller: 'links', action: 'new') %>
     <div class="field">
       <%= f.collection_select :code, Code.unused_codes, :code, :code, {prompt: "Select your code"} %>

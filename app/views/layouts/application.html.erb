@@ -16,8 +16,11 @@
     <header id="top_header" class="clearfix">
 
     <div class="wrapper">
-
-      <h1 class="logo">Nested</h1>
+      
+      <%= link_to root_path do %>
+        <h1 class="logo">Nested</h1>
+      <% end %>
+      
       <nav id="main_nav">
 
       <% if user_signed_in? %>

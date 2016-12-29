@@ -13,12 +13,14 @@
  *= require font-awesome
  *= require_tree .
  *= require_self
+ *= require morris
  */
 
  
 @import url(https://fonts.googleapis.com/css?family=Lilita+One);
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import "morris";
 
 /**
 * reset browser defaults

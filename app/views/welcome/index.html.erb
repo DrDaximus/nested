@@ -27,6 +27,9 @@
 				<%= link_to links_path do %>
 				<div><%= current_user.name %>'s Nest</div>
 				<% end %>
+				<%= link_to edit_user_registration_path do %>
+				<div><%= current_user.name %>'s Account</div>
+				<% end %>
 			<% else %>
 				<%= link_to "Sign in", new_user_session_path %> |
 				<%= link_to "Create your own nest", new_user_registration_path %>

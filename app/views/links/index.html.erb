@@ -1,70 +1,26 @@
 <% if user_signed_in? %>
 
-  <section id="banner" class="clearfix">
 
-  <div id="link-preview"><pretitle>Nested</pretitle></div>
-    
-  </section>
+<div id="nest-title"><%= current_user.name %>'s Nest</div>
 
-  <section id="nested_links">
-    <div>
-      <header class="clearfix">
-        <div id="nest-title"><%= current_user.name %>'s Nest</div>
+<section id="nested_links">
 
-        <div class="row">
-        <div class="col-md-12">
-          <% @links.order(:code).each do |link| %>
 
-              <div class="user-link">  
-                <div class="clearfix">
-
-                  <%= link_to preview_link_link_path(:id, link.id), id:"remote_preview_link", :remote => true do %>
-
-                    <div id="container-link-title" title="Show details"><img src="<%= favicon_show(link) %>"></img> <%= link.title %></div>
-
-                  <% end %>
-                  
-                  <%= link_to link.link do %>
-
-                    <div id="container-link-code" title="Visit link"><i class="fa fa-at"></i><%= link.code %></div>
-
-                  <% end %>
-
-                </div>
-                
-                <div id="container-view-count" >Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%>
-                <p><small>created: <%= l(link.created_at, format: :short) %></small></p>
-                </div>
-              
-                <div id="container-link"><a href="<%=link.link %>"><%= link.link %></a></div>
-
-                <div id="conatiner-links">
-
-                  <%= link_to preview_link_link_path(:id, link.id), id:"remote_preview_link", :remote => true do %>
-                    <i class="fa fa-info-circle fa-lg" title="Show details"></i>
-                  <% end %>|
-                  <%= link_to link do %>
-                    <i class="fa fa-line-chart fa-lg" title="Link stats"></i>
-                  <% end %>|
-                  <%= link_to edit_link_path(link) do%> 
-                    <i class="fa fa-tags fa-lg" title="Edit link"></i>
-                  <% end %>|
-                  <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                    <i class="fa fa-trash fa-lg" title="Delete link"></i>
-                  <% end %>
-
-                </div>
-              
-              </div>
-
-          <% end %>
-          </div>
-        </div>
-      </header>
+  <% @links.order(:code).each do |link| %>
+  <div class="link-item <% link_status(link)%> ">
+    <div class="row">
+      <div class="col-xs-1 link-icon"><div class="circle"><i class="fa fa-clock-o fa-lg" title="Edit link"></i></div></div>
+      <div class="col-xs-7 link-title"><%= link.title %></div>
+      <div class="col-xs-4 link-code">@<%= link.code %></div>
     </div>
-  </section>
-
-
+  </div>
+  <div class="link-details">
+    Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%><br>
+    <a href="<%=link.link %>"><%= link.link %></a><br>
+    created: <%= l(link.created_at, format: :short) %><br><br>
+  </div>
+  <% end %>
+</section>
 
 <% else %>
     

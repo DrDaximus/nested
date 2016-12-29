@@ -1,1 +1,4 @@
 $( "#link-preview" ).html( "<%= escape_javascript( render( :partial => "banner_content", :locals => { :link => @link} ) ) %>" );
+
+//Use link below in view where above to execute. 
+ <%= link_to preview_link_link_path(:id, link.id), id:"remote_preview_link", :remote => true do %>

@@ -1,7 +1,8 @@
 class Code < ActiveRecord::Base
 
-scope :unused_codes, lambda {
-    find_by_sql('SELECT codes.* FROM codes WHERE code NOT IN(SELECT code FROM links)LIMIT 10')
-  }
+	scope :unused_codes, lambda {find_by_sql('SELECT codes.* FROM codes WHERE code NOT IN(SELECT code FROM links)')}
+	scope :used_codes, lambda {find_by_sql('SELECT codes.* FROM codes WHERE code IN(SELECT code FROM links)')}
+	scope :dirty, lambda {find_by_sql ["SELECT * FROM codes WHERE code NOT IN(SELECT code FROM links) AND available = ?", false] }
+	scope :available, -> { where(available: true) }
 	
 end

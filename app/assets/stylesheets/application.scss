@@ -66,6 +66,8 @@ $white: #fff;
 
 $primary-font: 'Lilita One', cursive;
 
+h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
+
 #yield_wrapper {
 	margin: 65px 0 75px 0;
 }
@@ -97,39 +99,42 @@ $primary-font: 'Lilita One', cursive;
 }
 
 #top_header {
-	height: 65px;
+	box-shadow: 0px 0px 6px 2px $lightgrey;
+	height: 55px;
 	position: fixed;
 	top: 0;
 	width: 100%;
-	padding: 1.3em 0;
-	background: $welcomeBg;
+	padding: 1em 0;
+	background: white;
 	font-family: $primary_font;
 	z-index: 1000;
 	.logo {
-		color: $white;
+		small { color: $linkHighlight;}
+		color: $welcomeBg;
 		float: left;
-		font-size: 2em;
+		font-size: 1.9em;
 		n {
 			font-size: 0.5em;
 			color: $lightgrey;
 		}
 	}
 	#main_nav {
-		color: $white;
+
+		color: $linkHighlight;
 		float: right;
 		font-size: 1.2em;
 		padding-top: 0.4em;
 		a {
-			color: $white;
+			color: $linkHighlight;
 			&:hover {
-				color: $linkHighlight;
+				color: $welcomeBg;
 			}
 		}
 	}
 }
 
 .page-links {
-	box-shadow: 0px 0px 6px 6px $lightgrey;
+	box-shadow: 0px 0px 6px 2px $lightgrey;
 	width: 100%;
 	position: fixed;
 	bottom: 0;
@@ -137,12 +142,12 @@ $primary-font: 'Lilita One', cursive;
 	font-family: $primary_font;
 	font-size: 1.2em;
 	text-align: center;
-	color: $white;
-	height: 65px;
-	background: $welcomeBg;
-	padding-top: 1.5em;
+	color: $welcomeBg;
+	height: 55px;
+	background: white;
+	padding-top: 0.9em;
 	a {
-		color: $white;
+		color: $welcomeBg;
 		&:hover {
 			color: $linkHighlight;
 		}

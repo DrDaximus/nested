@@ -1,13 +1,40 @@
 namespace :codes do
 
-	desc "Clean up codes that are unused but marked as unavailable"
+	desc "Clean up codes that are unused/dirty/expired"
 	task clean: :environment do
-    p "Cleaning up unused codes..."
-    codes = Code.dirty
+    p "Starting clean..."
+    p "Removing unused codes"
+    codes = Code.unused_codes
+    dcount = 0
     codes.each do |code|
-    	code.available = false
-    	code.save
+    	code.destroy
+      dcount = dcount + 1 
     end
+    p ">> Destroyed #{dcount} of #{codes.count} unused codes"
+
+    p "Altering dirty codes"
+    codes = Code.dirty
+    acount = 0
+    codes.each do |code|
+      code.available = false
+      code.save
+      acount = acount + 1 
+    end
+    p ">> Altered #{acount} of #{codes.count} dirty codes"
+
+    p "Removing expired codes"
+    links = Link.expired
+    p "Expiring #{links.count} links..."
+    links.each do |link|
+      code = Code.where(code: link.code).first
+      code.destroy
+      link.expired = true
+      link.code = ""
+      link.save
+    end
+    p ">> Expired #{links.count} codes"
+
+    p "Done!"
   end
 
 	desc "Show code usages"
@@ -19,8 +46,6 @@ namespace :codes do
     p ">> Used codes = #{codes}"
     codes = Code.unused_codes.count
     p ">> Unused codes = #{codes}"
-    codes = Code.available.count
-    p ">> Available codes = #{codes}"
     codes = Code.dirty.count
     p ">> Dirty codes = #{codes}"
   end

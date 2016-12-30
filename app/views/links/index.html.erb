@@ -7,14 +7,22 @@
 
 
   <% @links.order(:code).each do |link| %>
-  <div class="link-item <%=link_status(link)%>">
+  <div class="link-item <%=link_status(link)%>" id="btn-<%=link.id%>">
     <div class="row">
       <div class="col-xs-1 link-icon"><div class="circle"><i class="fa fa-clock-o fa-lg" title="Edit link"></i></div></div>
       <div class="col-xs-8 link-title"><%= link.title %></div>
       <div class="col-xs-3 link-code">@<%= link.code %></div>
     </div>
   </div>
-  <div class="link-details">
+  <script> 
+  $(document).ready(function(){
+      $("#btn-"+<%=link.id%>).click(function(){
+          $("#display-"+<%=link.id%>).slideToggle("slow");
+      });
+  });
+  </script>
+  <div class="link-details" id="display-<%=link.id%>">
+    <%=link_expiry(link)%><br>
     Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%><br>
     <a href="<%=link.link %>"><%= link.link %></a><br>
     created: <%= l(link.created_at, format: :short) %><br><br>
@@ -33,3 +41,4 @@
     Create New Link
   <% end %>
 </div>
+

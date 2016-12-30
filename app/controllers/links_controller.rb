@@ -5,7 +5,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = current_user.links.all
+    @links = current_user.links.all.order(expires: :desc)
   end
 
   def preview_link
@@ -22,10 +22,8 @@ class LinksController < ApplicationController
   
   # GET /links/new
   def new
-    @code = Code.where(available: true).first
-    @code.available = false
-    @code.save
     @link = current_user.links.new
+    @code = gen_code
   end
 
   # GET /links/1/edit
@@ -36,9 +34,11 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.new(link_params)
-  
+    @code = Code.where(code: @link.code).first
     respond_to do |format|
       if @link.save 
+        @code.available = false
+        @code.save
         subscribe(@link)
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
@@ -74,6 +74,41 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def gen_code
+      #Count total codes generated and then compare to total producable codes to see how short on codes we are.
+      codes = Code.count 
+      # Use the following in some way to facilitate subscription tiers.
+      #if current_user.basic
+        bottom = 100000
+        top = 999999
+      #elsif current_user.bronze
+        #bottom = 10000
+        #top = 99999
+      #elsif current_user.silver
+        #bottom = 10000
+        #top = 99999
+      #elsif current_user.gold
+        #bottom = 1000
+        #top = 9999
+      #elsif current_user.platinum
+        #bottom = 999
+        #top = 100
+      #reserved
+        #bottom = 99
+        #top = 1
+      #end
+      range = top - bottom
+      # Unless there are more than 5 codes left to produce, don't produce any more. 
+      unless range - codes < 5
+        code = Random.rand(bottom...top)
+        gen_code if Code.exists?(code: code)
+        Code.create(code: code)
+        return code
+      else
+        redirect_to links_path, notice: "Oops... we seem to be short on codes, please try again shortly"
+      end
+    end
 
     def subscribe(link)
       case link.subscribe_opt
@@ -114,6 +149,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :link, :code, :code_id, :goal, :subscribe_opt)
+      params.require(:link).permit(:title, :link, :code, :goal, :subscribe_opt, :expires, :expired)
     end
 end

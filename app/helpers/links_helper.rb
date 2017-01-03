@@ -1,5 +1,11 @@
 module LinksHelper
 
+	def link_count(link)
+		identifier = link.id.to_s + (link.created_at.to_i).to_s
+    clicks = Ahoy::Event.where(properties: identifier)
+    clicks.count
+	end
+
 	def link_status(link)
 		if link.expired
 			return "expired"
@@ -19,21 +25,13 @@ module LinksHelper
 	end
 
 	def favicon_show(url)
-
 		@fav = "http://www.google.com/s2/favicons?domain_url=" + url.link
 		return @fav
 
 	end
 
 	def clicks_chart_data
-		
 		clicks = @clicks.group("Date(time)").select("Date(time) as day, count(*) as day_count")
+	end
 
-	end
-	def total_clicks
-		total_clicks = @clicks.count
-	end
-	def goal_clicks
-		total_clicks = @link.goal
-	end
 end

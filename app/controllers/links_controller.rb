@@ -5,19 +5,21 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
+    clean_codes
     @links = current_user.links.all.order(expires: :desc)
   end
 
   def preview_link
     @link = Link.find(params[:format])  
-    @page = MetaInspector.new(@link.link)
+    #@page = MetaInspector.new(@link.link)
   end
 
   # GET /links/1
   # GET /links/1.json
   def show
-    @page = MetaInspector.new(@link.link)
-    @clicks = Ahoy::Event.where(properties: @link.id)
+    #@page = MetaInspector.new(@link.link)
+    @identifier = @link.id.to_s + (@link.created_at.to_i).to_s
+    @clicks = Ahoy::Event.where(properties: @identifier)
   end
   
   # GET /links/new
@@ -74,6 +76,17 @@ class LinksController < ApplicationController
   end
 
   private
+
+    def clean_codes
+      links = current_user.links.expired
+      links.each do |link|
+        code = Code.where(code: link.code).first
+        code.destroy
+        link.expired = true
+        link.code = ""
+        link.save
+      end   
+    end
 
     def gen_code
       #Count total codes generated and then compare to total producable codes to see how short on codes we are.

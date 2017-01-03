@@ -9,20 +9,21 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+
+#My Added Gems
 gem 'stripe'
 gem 'devise'
 gem 'metainspector'
-gem "default_value_for", "~> 3.0.0"
+gem 'default_value_for', '~> 3.0.0'
 gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
+
+#Graphs
+gem 'groupdate'
 gem "chartkick"
 
-gem 'dateslices'
-
-gem 'morrisjs-rails'
-gem 'raphael-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

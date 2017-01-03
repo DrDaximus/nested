@@ -13,10 +13,11 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require raphael
-//= require morris
-//= require_tree .
+//= require Chart.bundle
+//= require chartkick
 //= require ahoy
+//= require_tree .
+
 
 $(document).on('page:change', function() {	
 

@@ -1,12 +1,11 @@
 <% if user_signed_in? %>
 
-
 <div id="nest-title"><%= current_user.name %>'s Nest</div>
 
 <section id="nested_links">
 
-
   <% @links.order(:code).each do |link| %>
+
   <div class="link-item <%=link_status(link)%>" id="btn-<%=link.id%>">
     <div class="row">
       <div class="col-xs-1 link-icon"><div class="circle"><i class="fa fa-clock-o fa-lg" title="Edit link"></i></div></div>
@@ -14,6 +13,7 @@
       <div class="col-xs-3 link-code">@<%= link.code %></div>
     </div>
   </div>
+
   <script> 
   $(document).ready(function(){
       $("#btn-"+<%=link.id%>).click(function(){
@@ -21,13 +21,15 @@
       });
   });
   </script>
-  <div class="link-details" id="display-<%=link.id%>">
-    <%=link_expiry(link)%><br>
-    Viewed <%= pluralize(Ahoy::Event.where(properties: link.id).count, 'time')%><br>
-    <a href="<%=link.link %>"><%= link.link %></a><br>
-    created: <%= l(link.created_at, format: :short) %><br><br>
+
+  <div class="link-details <%=link_status(link)%>" id="display-<%=link.id%>">    
+   
+    <%= render "link_details", link: link %>
+   
   </div>
+
   <% end %>
+
 </section>
 
 <% else %>

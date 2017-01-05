@@ -11,9 +11,14 @@
     </div>
   <% end %>
   
-   <%= f.hidden_field :subscribe_opt %>
-   <%= f.hidden_field :code, value: @code %>
-  <h2>Code: <%= @code %></h2>
+  <%= f.hidden_field :subscribe_opt %>
+  <%= f.hidden_field :code, value: @code.code if @code %>
+
+  <% if current_page?(controller: 'links', action: 'new') %>
+    <h2>Code: <%= @code.code %></h2>
+  <% else %>
+    <h2>Code: <%= @link.code %></h2>
+  <% end %>
 
   <div class="field">
     <%= f.label :subscribe_opt, value: "Subscription" %><br>
@@ -35,8 +40,11 @@
   <% unless current_page?(controller: 'links', action: 'new') %>
     <iframe src="<%= @link.link %>"></iframe>
   <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
 
 <% end %>
+
+

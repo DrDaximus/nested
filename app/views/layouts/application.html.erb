@@ -4,7 +4,6 @@
   <title>Nested</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://www.google.com/jsapi", "chartkick" %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
 </head>
@@ -25,7 +24,7 @@
 
       <% if user_signed_in? %>
 
-        <%= link_to links_path, title: current_user.name + "'s Home" do %>
+        <%= link_to links_path, title:  "'s Home" do %>
           <i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;
         <% end %> 
 

@@ -19,6 +19,7 @@ $primary-font: 'Lilita One', cursive;
 	box-sizing: border-box;
 }
 
+
 #nest-title {
 	position: fixed;
 	background: white;
@@ -207,48 +208,21 @@ h1, h2{
 	}
 	.goal-achieved {
 		position: absolute;
-		top: 85px;
-		left: 20px;
+		z-index: 1000;
+		top: 160px;
+		left: 60px;
 		height: 110px;
 		width: 150px;
 		background-image: image-url("MissionComplete.jpg");
 		background-repeat: no-repeat;
 		background-size: cover;
 	}
-	.goals {
-		width: 208px;
-		display: inline-block;
-		margin-top: 1em;
-		padding: 10px 4px;
-		#goal-actual {
-			float: left;
-			margin-right:3px;
-			width:95px;
-			padding-bottom: 0.5em;
-			border-bottom: 2px solid red;
-		}
-		#goal-expected {
-			margin-left:3px;
-			float: left;
-			width:95px;
-			padding-bottom: 0.5em;
-			border-bottom: 2px solid green;
-		}
-	}
 }
 
-#analytics-section {
-	max-width: 1020px;
-	margin: 0 auto;
-	}
-
-	#link-view {
-		margin-top: 10px;
-		width: 90%;
-		margin-left: 5%;
-		height: 450px
-	}
-
-/* Rectangle 7: */
+.graphs {
+	margin-top: 40px;
+}
+.graph {border: solid 2px $linkHighlight; border-radius: 10px; padding: 10px;}
+.no-border { border:none;}
 
 

@@ -1,22 +1,33 @@
 
 <section id="graph-section" class="clearfix">
 
-	<h1><%= pluralize(link_count(@link), 'unique view')%>  for @<%= @link.code %></h1>
+	<h1><%= pluralize(link_count(@link), 'view')%>  for @<%= @link.code == "" ? "expired" : @link.code %></h1>
+
 	<h2><%= @link.title %></h2>	
 
 	<% if link_count(@link) >= @link.goal && @link.goal != 0 %>
 		<div class="goal-achieved"></div>
 	<% end %>
 
-	<div class="goals">
-	<div id="goal-actual">Current</div>
-	<% if @link.goal != 0 %>
-	<div id="goal-expected">Goal (<%= @link.goal%>)</div>
-	<% end %>
+
+	
+	<div class="graphs">
+		<div class="row">
+			<div class="col-md-4 graph">
+				<%= pie_chart [["Need (#{@link.goal-@clicks.count})", @link.goal-@clicks.count], ["Achieved (#{@clicks.count})", @clicks.count]], donut: true, label: "Qty", colors: ["#ED5747", "#9ED561"], library: {title: {text: "Target #{@link.goal} Visits"}} %>
+			</div>
+			<div class="col-md-8 graph no-border">
+				<%= area_graph("minutes", "300px", "100%") %>
+				
+			</div>
+		</div>	
+		<br><br>
+		<div class="row">
+		<div class="graph">
+			<%= area_graph("hour_of_day", "300px", "100%") %>
+		</div>
 	</div>
-
-	<%= line_chart @clicks.group_by_minute(:time).count %>
-
+	</div>
 
 </section>
 

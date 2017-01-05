@@ -1,11 +1,11 @@
 class LinksController < ApplicationController
   before_action :authenticate_user!
   before_action :set_link, only: [:clicked_links, :show, :edit, :update, :destroy]
+  before_action :clean_up, only: [:new, :show, :index]
 
   # GET /links
   # GET /links.json
   def index
-    clean_codes
     @links = current_user.links.all.order(expires: :desc)
   end
 
@@ -18,14 +18,14 @@ class LinksController < ApplicationController
   # GET /links/1.json
   def show
     #@page = MetaInspector.new(@link.link)
-    @identifier = @link.id.to_s + (@link.created_at.to_i).to_s
-    @clicks = Ahoy::Event.where(properties: @identifier)
+    @link_id = @link.gen_id
+    @clicks = Ahoy::Event.where(properties: @link_id)
   end
   
   # GET /links/new
   def new
     @link = current_user.links.new
-    @code = gen_code
+    @code = Code.gen_code
   end
 
   # GET /links/1/edit
@@ -36,12 +36,12 @@ class LinksController < ApplicationController
   # POST /links.json
   def create
     @link = current_user.links.new(link_params)
-    @code = Code.where(code: @link.code).first
+    find_code
     respond_to do |format|
       if @link.save 
+        subscribe(@link)
         @code.available = false
         @code.save
-        subscribe(@link)
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
       else
@@ -68,6 +68,12 @@ class LinksController < ApplicationController
   # DELETE /links/1
   # DELETE /links/1.json
   def destroy
+    if @link.expired == false
+      find_code
+      @code.destroy
+    end
+    subscription = Stripe::Subscription.retrieve(@link.subscriptionid)
+    subscription.delete
     @link.destroy
     respond_to do |format|
       format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
@@ -77,7 +83,13 @@ class LinksController < ApplicationController
 
   private
 
-    def clean_codes
+    def clean_up
+      expire_links
+      Code.clean_codes
+    end
+
+    #Remove expired link codes and mark link as expired
+    def expire_links
       links = current_user.links.expired
       links.each do |link|
         code = Code.where(code: link.code).first
@@ -85,44 +97,10 @@ class LinksController < ApplicationController
         link.expired = true
         link.code = ""
         link.save
-      end   
+      end  
     end
-
-    def gen_code
-      #Count total codes generated and then compare to total producable codes to see how short on codes we are.
-      codes = Code.count 
-      # Use the following in some way to facilitate subscription tiers.
-      #if current_user.basic
-        bottom = 100000
-        top = 999999
-      #elsif current_user.bronze
-        #bottom = 10000
-        #top = 99999
-      #elsif current_user.silver
-        #bottom = 10000
-        #top = 99999
-      #elsif current_user.gold
-        #bottom = 1000
-        #top = 9999
-      #elsif current_user.platinum
-        #bottom = 999
-        #top = 100
-      #reserved
-        #bottom = 99
-        #top = 1
-      #end
-      range = top - bottom
-      # Unless there are more than 5 codes left to produce, don't produce any more. 
-      unless range - codes < 5
-        code = Random.rand(bottom...top)
-        gen_code if Code.exists?(code: code)
-        Code.create(code: code)
-        return code
-      else
-        redirect_to links_path, notice: "Oops... we seem to be short on codes, please try again shortly"
-      end
-    end
-
+      
+    # Run customer subscription process when link created.
     def subscribe(link)
       case link.subscribe_opt
       when 0
@@ -138,6 +116,7 @@ class LinksController < ApplicationController
         link.expires = Time.now + 1.year
         init_subscription("NestYearCode")
       end
+      link.subscriptionid = @subscription.id
       link.save
     end
 
@@ -151,8 +130,12 @@ class LinksController < ApplicationController
       else
         customer_id = current_user.stripeid
       end
-      Stripe::Subscription.create(:customer => customer_id, :plan => plan, :metadata => {"code" => @link.code})
+      @subscription = Stripe::Subscription.create(:customer => customer_id, :plan => plan, :metadata => {"code" => @link.code})
       
+    end
+
+    def find_code
+      @code = Code.where(code: @link.code).first
     end
 
     # Use callbacks to share common setup or constraints between actions.

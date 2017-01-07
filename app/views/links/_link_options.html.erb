@@ -1,0 +1,66 @@
+<div class="modal-dialog">
+  <div class="modal-content">
+		<div class="modal-header">
+			<h2>New Link Options</h2>
+			Select a link type
+		</div>
+		<div id="options-wrapper">
+			<div class="row">
+				<div class="options col-md-3">
+					<%= link_to new_link_path({:subscribe_opt => 0}) do %>
+					<div class="option">
+						<div class="img-tag">
+							<%= image_tag("sub-tag-0.png", :alt => "Basic", size: "45") %>
+							<div class="sub-title">Basic</div>
+							<div class="sub-price">Free*</div>
+							<div class="sub-detail">@123456</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+				<div class="options col-md-3">
+					<%= link_to new_link_path(:subscribe_opt => 1) do %>
+					<div class="option">
+						<div class="img-tag">
+							<%= image_tag("sub-tag-1.png", :alt => "Silver", size: "45") %>
+							<div class="sub-title">Silver</div>
+							<div class="sub-price">£2 p/m</div>
+							<div class="sub-detail">@123456</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+				<div class="options col-md-3">
+					<%= link_to new_link_path(:subscribe_opt => 2) do %>
+					<div class="option">
+						<div class="img-tag">
+							<%= image_tag("sub-tag-2.png", :alt => "Bronze", size: "45") %>
+							<div class="sub-title">Bronze</div>
+							<div class="sub-price">£3 p/m</div>
+							<div class="sub-detail">@12345</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+				<div class="options col-md-3">
+					<%= link_to new_link_path(:subscribe_opt => 3) do %>
+					<div class="option">
+						<div class="img-tag">
+							<%= image_tag("sub-tag-3.png", :alt => "Gold", size: "45") %>
+							<div class="sub-title">Gold</div>
+							<div class="sub-price">£5 p/m</div>
+							<div class="sub-detail">@1234</div>
+						</div>
+					</div>
+					<% end %>
+				</div>
+				<div class="conditions">*link will expire after 24hrs</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="terms">
+				*** Basic links will expire after 24 hours and the code associated with it will return to the pool of available codes. Should you wish to keep a code for longer than 24 hours, we highly recommend using one of the paid options. Your card will be charged on a monthly basis (1 month minimum) from the date of creation. You can cancel at any time by removing the link in your link dashboard and no further charges will be process for that link. All payments are processed securly using Stripe and Nested will never store or handle your payment details directly. ***
+			</div>
+		</div>
+	</div>
+</div>

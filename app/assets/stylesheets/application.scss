@@ -15,14 +15,11 @@
  *= require_self
  */
 
- 
-@import url(https://fonts.googleapis.com/css?family=Lilita+One);
 @import "bootstrap";
 @import "bootstrap-sprockets";
+@import "variables";
 
-/**
-* reset browser defaults
-----------------------------------*/
+/* reset browser defaults----------------------------------*/
 body,div,dl,dt,dd,ul,ol,
 li,h1,h2,h3,h4,h5,h6,
 pre,form,fieldset,p,
@@ -53,17 +50,6 @@ a {color: black; a:active,a:link,a:focus {outline: 0px none; text-decoration: no
 
 /* start of my css */
 
-$welcomeBg: #ED5747;
-$welcomeBgHighlight: #EC6657;
-$welcomeLogo: #fff;
-$welcomeTitle: #616161;
-$welcomeButton: #9ED561;
-$lightgrey: #D3D3D3;
-$linkHighlight: #616161;
-$white: #fff;
-
-$primary-font: 'Lilita One', cursive;
-
 h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 
 #yield_wrapper {
@@ -93,7 +79,9 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 }
 
 .notice-drop {
-	top:65px;
+	position: absolute;
+	top:78px;
+	z-index: 1500;
 }
 
 #top_header {
@@ -105,10 +93,11 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	padding: 1em 0;
 	background: white;
 	font-family: $primary_font;
-	z-index: 1000;
+	z-index: 2000;
+	.main-logo { text-align: center; margin-top: -5px;}
 	.logo {
-		small { color: $linkHighlight;}
-		color: $welcomeBg;
+		small { color: $main;}
+		color: $secondary;
 		float: left;
 		font-size: 1.9em;
 		n {
@@ -118,14 +107,14 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	}
 	#main_nav {
 
-		color: $linkHighlight;
+		color: $secondary;
 		float: right;
 		font-size: 1.2em;
 		padding-top: 0.4em;
 		a {
-			color: $linkHighlight;
+			color: $secondary;
 			&:hover {
-				color: $welcomeBg;
+				color: $main;
 			}
 		}
 	}
@@ -140,14 +129,14 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	font-family: $primary_font;
 	font-size: 1.2em;
 	text-align: center;
-	color: $welcomeBg;
+	color: $main;
 	height: 55px;
 	background: white;
 	padding-top: 0.9em;
 	a {
-		color: $welcomeBg;
+		color: $main;
 		&:hover {
-			color: $linkHighlight;
+			color: $secondary;
 		}
 	i {
 		
@@ -160,7 +149,7 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 		box-shadow: 0px 0px 6px 6px $lightgrey;
 		padding-top: 2em; 
 		padding-bottom: 2em; 
-		background: $welcomeBg; 
+		background: $main; 
 		margin-top: 10em; 
 		border-radius: 10px;
 		color: $white;
@@ -176,12 +165,12 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	font-size: 1em;
 	text-align: center;
 	color: $white;
-	background: $welcomeBg;
+	background: $main;
 	padding-top: 1.5em;
 	a {
 		color: $white;
 		&:hover {
-			color: $linkHighlight;
+			color: $secondary;
 		}
 	}
 }

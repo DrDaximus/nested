@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
+  resources :users, :only => [:show]
+
   get 'subscribe' => "subscribe_controller#subscribe"
-  resources :links do
+  
+  resources :links do 
     member do
       get 'preview_link'
     end

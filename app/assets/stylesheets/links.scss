@@ -2,33 +2,97 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$welcomeBg: #ED5747;
-$welcomeBgHighlight: #EC6657;
-$welcomeLogo: #fff;
-$welcomeTitle: #616161;
-$welcomeButton: #9ED561;
-$lightgrey: #D3D3D3;
-$linkHighlight: #7C7C7C;
-$white: #fff;
-
-$active: #7FE781;
-
-$primary-font: 'Lilita One', cursive; 
+@import "variables";
 
 * {
 	box-sizing: border-box;
 }
 
+#my-modal { margin-top: 100px;  }
+.modal-content { overflow: hidden;}
+.modal-header {background: $lightgrey; color: white; text-align: center; }
+#options-wrapper { 
+	font-family: $primary_font;
+	a {color: $secondary;}
+	margin: 0 auto;
+	width: 90%;
+	padding: 20px;
+	.options { 
+		text-align: center;
+		margin: 20px auto;
+		.option { 
+			.img-tag { position: relative; top: -22px;}
+			height: 120px;
+			border-radius: 20px;
+			border: solid 1px $lightgrey;
+			background: $white;
+			box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
+			&:hover { box-shadow: 0 2px 4px 0 $main;}
+			.sub-title { margin: 4px 0;}
+			.sub-price { padding: 5px 0; font-size: 1.2em; color: $main;}
+			.sub-detail { padding: 10px 0;}
+		}
+	}
+	.conditions { text-align: center;}
+}
+.terms{ text-align: center; color: $secondary; font-size: 0.8em}
+
+.link-form-wrapper { 
+	padding: 10px; 
+	margin: 0 auto; 
+	width: 40%; 
+	color: $secondary;
+	.details-wrap {
+		padding: 20px 30px;
+		border: solid 2px #A3A5B9;
+		border-radius: 10px;
+		margin: 0 0 10px 0;
+		.card-details {
+			width: 80%;
+			margin: 0 auto;
+			.card-number { width: 100%; input{border-radius: 3px 3px 0 0;}}
+			.card-expiry { float: left; width: 50%; input{border-radius: 0 0 0 3px;} }
+			.cvv {  width: 50%; input{border-radius: 0 0 3px 0;}}
+		}
+		.hits { margin: 0 auto; text-align: center; width: 100px; .hits-label {margin-bottom: 3px;}}
+	}
+	.basic {background: $basic;}
+	.silver {background: $silver;}
+	.bronze {background: $bronze;}
+	.gold {background: $gold;}
+
+	.tag { 
+		width: 100%;
+		z-index:3000;
+		position: absolute;  
+		top: 9px;
+		left: 0;
+	}
+	.title { 
+		color: white;
+		text-align: center; 
+		margin-top: 5px; 
+		margin-bottom: 15px; 
+		font-weight: bold; 
+		font-size: 2em;
+	}
+}
+#stripe-logo { text-align: center}
+#stripe_error { text-align: center; color: $main; padding: 5px 0; font-weight: bold;}
+
+//index styling
 
 #nest-title {
+	z-index: 1000;
 	position: fixed;
+	top: 55px;
 	background: white;
 	width: 100%;
-	padding: 20px;
+	padding: 40px 0 20px 0;
 	text-align: center;
 	font-family: $primary_font;
 	font-size: 1.5em;
-	color: $linkHighlight;
+	color: $secondary;
 
 }
 
@@ -44,7 +108,7 @@ h1, h2{
 #nested_links	{
 	max-width: 505px;
 	margin: 0 auto;
-	padding-top: 64px;
+	padding-top: 70px;
 }
 
 .link-item {
@@ -54,39 +118,32 @@ h1, h2{
 	border-radius: 25px;
 	padding: 13px;
 	color: white;
-	background: $linkHighlight ;
+	background: $secondary;
 	font-size: 1.2em;
-	font-weight: bold;
+	font-weight: bold;	
 	.link-icon {
+		a {color: $main; &:hover {color: $secondary;}}
 		.circle { 
+			position:absolute;
 			text-align: center;
 			padding-top: 6px;
 			padding-left: 1px;
 			font-size: 0.9em;
-			margin-top: -5px;
-			margin-left: -5px;
+			margin-top: -32px;
+			margin-left: -14px;
 			background: white;
-			height: 28px;
-			width: 28px;
+			height: 46px;
+			width: 46px;
 			border-radius: 50%;
+			.tag-img {margin: -6px 0 0 -1px;}
 		}
 	}
 	.link-title {}
 	.link-code { text-align: right;}
 	}
 
-	.active {
-		//background: $active;
-		//border-color: $active !important;
-		.circle {color: $active;
-		}
-	}
-	.ending {
-		//background: $welcomeBg;
-		//border-color: $welcomeBg !important;
-		.circle {color: $welcomeBg;
-	}
-	}
+	.active {}
+	.ending {.link-code {color: $main;}}
 	.expired {
 		background: $lightgrey;
 		border-color: $lightgrey !important;
@@ -104,7 +161,7 @@ h1, h2{
 	margin: 0 auto; 
 	width: 90%; 
 	display: none; 
-	border: solid 2px $linkHighlight; 
+	border: solid 2px $secondary; 
 	border-radius: 0px 0px 25px 25px; 
 	margin-top: -2px; 
 	margin-bottom: 3px; 
@@ -121,7 +178,7 @@ h1, h2{
 	margin: 5px 0 10px 0;
 	font-size: 0.8em;
 	text-align: center;
-	color: $linkHighlight;
+	color: $secondary;
 }
 
 .dial {
@@ -149,10 +206,11 @@ h1, h2{
 }
 
 .link-expiry {
-	margin: 16px 0 0 0;
+	margin: 20px 0 0 0;
 	font-size: 0.8em;
 	text-align: center;
-	color: red;
+	font-weight: bold;
+	color: $main;
 }
 
 .left-links { position: relative; right: 100px;}
@@ -161,11 +219,11 @@ h1, h2{
 	height: 50px; 
 	width: 50px; 
 	border-radius: 25px; 
-	border: solid 2px $linkHighlight; 
+	border: solid 2px $secondary; 
 	margin-bottom: 12px; 
 	text-align: center;
 	padding-top: 14px;
-	a {color: $linkHighlight;}
+	a {color: $secondary;}
 }
 .left-mid { margin-left: -20px; }
 .right-mid { margin-left: 20px; }
@@ -197,7 +255,7 @@ h1, h2{
 	min-height: 380px;
 	margin: 0 auto;
 	text-align: center;
-	color: $linkHighlight;
+	color: $secondary;
 	h1 {
 		font-family: $primary_font;
 		font-size: 2em;
@@ -222,7 +280,7 @@ h1, h2{
 .graphs {
 	margin-top: 40px;
 }
-.graph {border: solid 2px $linkHighlight; border-radius: 10px; padding: 10px;}
+.graph {border: solid 2px $secondary; border-radius: 10px; padding: 10px;}
 .no-border { border:none;}
 
 

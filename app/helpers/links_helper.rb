@@ -1,5 +1,18 @@
 module LinksHelper
 
+	def subscription(option)
+		case option
+		when 0
+			"Basic Link"
+		when 1
+			"Silver Link"
+		when 2
+			"Bronze Link"
+		when 3
+			"Gold Link"
+		end
+	end
+
 	def link_count(link)
 		identifier = link.id.to_s + (link.created_at.to_i).to_s
     clicks = Ahoy::Event.where(properties: identifier)
@@ -13,7 +26,7 @@ module LinksHelper
 		end
 		if link.expired
 			return "expired"
-		elsif Time.now + 12.hours > link.expires
+		elsif Time.now + 1.hour > link.expires
 			return "ending"
 		else 
 			return "active"
@@ -22,18 +35,27 @@ module LinksHelper
 
 	def link_expiry(link)
 		# Capture error links that recieved no expiry on creation
+		sub = link.subscribe_opt
 		unless link.expires
 			recover_expiry
 		end
-		if Time.now < link.expires
-			"Expires in " + distance_of_time_in_words(Time.now, link.expires) 
+		unless sub == 0
+			"#{subscription(sub)} Subscription"
 		else
-			"expired " + time_ago_in_words(link.expires) + " ago"
+			if Time.now < link.expires
+				"Expires in " + distance_of_time_in_words(Time.now, link.expires) 
+			else
+				"expired " + time_ago_in_words(link.expires) + " ago"
+			end
 		end
 	end
 
 	def recover_expiry
-		link.expires = Time.now + 24.hours
+		if link.subscribe_opt = 0
+			link.expires = Time.now + 24.hours
+		else
+			link.expires = Time.now + 200.years
+		end
 		link.save
 	end
 

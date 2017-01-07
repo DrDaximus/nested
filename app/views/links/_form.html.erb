@@ -1,3 +1,4 @@
+<div class="link-form-wrapper">
 <%= form_for(@link) do |f| %>
   <% if @link.errors.any? %>
     <div id="error_explanation">
@@ -10,41 +11,64 @@
       </ul>
     </div>
   <% end %>
-  
+
   <%= f.hidden_field :subscribe_opt %>
   <%= f.hidden_field :code, value: @code.code if @code %>
 
-  <% if current_page?(controller: 'links', action: 'new') %>
-    <h2>Code: <%= @code.code %></h2>
+
+  <div class="details-wrap <%= subscription(@link.subscribe_opt).downcase %>">
+    <div class="title">
+      <div class="tag">
+        <%= image_tag("sub-tag-#{@link.subscribe_opt}.png", :alt => "Silver", size: "80") %>
+      </div> 
+      <% if current_page?(controller: 'links', action: 'new') %>
+        @<%= @code.code %>
+      <% else %>
+        @<%= @link.code %>
+      <% end %>
+    </div>
+
+    <h2><%= subscription(@link.subscribe_opt) %> Details</h2>
+    <div class="field">
+      <%= f.text_field :title, :maxlength => 35, class: "form-control", placeholder: "Enter a short description" %>
+    </div>
+    <div class="field">
+      <%= f.url_field :link, class: "form-control", placeholder: "Enter a valid url or web address" %>
+    </div>
+    <div class="field hits">
+      <div class="hits-label">
+      <b>Hits Target</b><br>
+      <small>(Optional)</small>
+      </div> 
+      <%= f.text_field :goal, class: "form-control hits" %>
+    </div>
+
+    <% unless current_page?(controller: 'links', action: 'new') %>
+      <iframe src="<%= @link.link %>"></iframe>
+    <% end %>
+  </div>
+
+  <%= f.hidden_field :hold_token, value: params[:stripeToken] %>
+
+  <% if current_user.token? || @link.hold_token.present? %>
+    <div class="actions">
+      <%= f.submit "Activate Link", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
+    </div>
   <% else %>
-    <h2>Code: <%= @link.code %></h2>
+    <script
+      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+      data-email=<%= current_user.email%>
+      data-key="<%=Rails.configuration.stripe[:publishable_key] %>"
+      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+      data-name="Nested Links"
+      data-description= "Add Payment Method"
+      data-panel-label="Add"
+      data-label="Activate Link"
+      data-allow-remember-me="false">
+    </script>
+    <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
   <% end %>
-
-  <div class="field">
-    <%= f.label :subscribe_opt, value: "Subscription" %><br>
-    <%= f.text_field :subscribe_opt %>
-  </div>
-
-  <div class="field">
-    <%= f.label :title %><br>
-    <%= f.text_field :title, :maxlength => 35 %>
-  </div>
-  <div class="field">
-    <%= f.label :link %><br>
-    <%= f.url_field :link %>
-  </div>
-  <div class="field">
-    <%= f.label :goal %><br>
-    <%= f.text_field :goal %>
-  </div>
-  <% unless current_page?(controller: 'links', action: 'new') %>
-    <iframe src="<%= @link.link %>"></iframe>
-  <% end %>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 
 <% end %>
 
-
+</div>

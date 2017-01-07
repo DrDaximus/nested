@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
 //= require highcharts
 //= require chartkick
@@ -19,14 +20,8 @@
 //= require_tree .
 
 
-$(document).on('page:change', function() {	
-
-	$('#notice, #alert').hide(); 
-	$('#notice, #alert').slideDown( "slow", function(){ });
-
-	setTimeout(function() {
+setTimeout(function() {
 		$('#notice, #alert' ).slideUp("slow", function() {
 			$(this).remove();
 		})
 	}, 4500);
-});

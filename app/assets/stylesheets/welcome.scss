@@ -2,17 +2,11 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-
-$welcomeBg: #ED5747;
-$welcomeBgHighlight: #EC6657;
-$welcomeLogo: #fff;
-$welcomeTitle: #616161;
-$welcomeButton: #9ED561;
-$lightgrey: #D3D3D3;
-$linkHighlight: #616161;
-$white: #fff;
+@import "variables";
 
 n {font-family: 'Arial Black', cursive;}
+
+.welcome-logo	{ top: 50px; position: absolute;}
 
 .fetch-bg {
 	margin-top: -65px;
@@ -20,43 +14,28 @@ n {font-family: 'Arial Black', cursive;}
 	width: 100vw;
 	height: 100%;
 	min-height: 100vh;
-	background: $welcomeBg;
+	background: $main;
 }
 
 .fetch-wrapper {
 	width: 90%;
 	margin: 0 auto;
-	padding-top: 5%;
+	padding-top: 100px;
 	text-align: center;
 }
 
 #logo {
 		letter-spacing: -4px;
-		color: $welcomeLogo;
-		font-size: 10em;
+		color: $white;
+		font-size: 8em;
 		font-weight: 700;
 		n {font-size: 0.4em; }
 	}
 
 #title {
-	color: $welcomeTitle;
-	font-size: 4.5em;
-	padding: 1% 0 10% 0;
-}
-
-.txtUpsideDown {
-	color: $welcomeBgHighlight;
-	font-size: 4.5em;
-	 -moz-transform: scaleX(-1);    /* Gecko */
-	 -o-transform: scaleX(-1);      /* Opera */
-	 -webkit-transform: scaleX(-1); /* Webkit */
-	 transform: scaleX(-1);         /* Standard */
-	 filter: FlipH;                 /* IE 6/7/8 */
-	 -moz-transform: scaleY(-1);    /* Gecko */
-	 -o-transform: scaleY(-1);      /* Opera */
-	 -webkit-transform: scaleY(-1); /* Webkit */
-	 transform: scaleY(-1);         /* Standard */
-	 filter: FlipW;                 /* IE 6/7/8 */
+	color: $secondary;
+	font-size: 4em;
+	padding: 10px 0 5% 0;
 }
 
 .nest-count{
@@ -70,14 +49,14 @@ n {font-family: 'Arial Black', cursive;}
 }
 
 .input-group {
-	font-family: 'Lilita One', cursive;
+	font-family: $primary-font;
 	width: 60%;
 	max-width: 500px;
 	margin: 0 auto;
 	padding-top: 10px;
 	
 	.code-input, .input-group-addon {
-		font-family: 'Lilita One', cursive;
+		font-family: $primary-font;
 		text-align: center;
 		height: 65px;
 		font-size: 2.8em;
@@ -88,12 +67,12 @@ n {font-family: 'Arial Black', cursive;}
 			width: 65px;
 			font-size: 3em;
 			border-radius: 10px;
-			color: $linkHighlight;
+			color: $secondary;
 		}
 	}
 
 	.submit-code-btn {
-		font-family: 'Lilita One', cursive;
+		font-family: $primary-font;
 		width: 45%;
 		max-width: 377px;
 		max-width: 400px;
@@ -112,7 +91,7 @@ n {font-family: 'Arial Black', cursive;}
 	}
 	
 	.mylinks {
-		margin-top: 2.5em;
+		margin-top: 4em;
 		color: $white;
 		a {
 		color: $white;
@@ -120,7 +99,7 @@ n {font-family: 'Arial Black', cursive;}
 		transition: all .2s ease-in-out;
 		}
 		a:hover { 
-			color: $linkHighlight;
+			color: $secondary;
 	 	}
 	}
 

@@ -8,7 +8,14 @@
 
   <div class="link-item <%=link_status(link)%>" id="btn-<%=link.id%>">
     <div class="row">
-      <div class="col-xs-1 link-icon"><div class="circle"><i class="fa fa-clock-o fa-lg" title="Edit link"></i></div></div>
+      <div class="col-xs-1 link-icon">
+          <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+            <i class="fa fa-times fa-lg" title="Delete link"></i>
+          <% end %>
+        <div class="circle <%= 'hide' if link_status(link) == 'expired' %>">
+          <div class="tag-img"><%= image_tag("sub-tag-#{link.subscribe_opt}.png", :alt => "Nest Type", size: "47") %></div>
+        </div>
+      </div>
       <div class="col-xs-8 link-title"><%= link.title %></div>
       <div class="col-xs-3 link-code">@<%= link.code %></div>
     </div>
@@ -39,8 +46,18 @@
 <% end %>
 
 <div class="page-links">
-  <%= link_to new_link_path, title: "Create a new link" do %>
+  <%= link_to "#my-modal", "data-toggle" => "modal" do %>
     Create New Link
+  <% end %> |
+  <%= link_to edit_user_registration_path do %>
+    Account Settings
   <% end %>
 </div>
+
+
+
+<div class="modal fade" id="my-modal" title="My modal">
+  <%= render "link_options" %>
+</div>
+
 

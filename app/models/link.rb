@@ -1,9 +1,11 @@
 class Link < ActiveRecord::Base
+	attr_accessor :hold_token
 	
 	belongs_to :user
 	validates :code, presence: true, uniqueness: true, on: :create
 	validates :subscribe_opt, :title, :link, presence: true
 
+	scope :active, -> { where(expired: false) }
 	scope :expired, lambda { where('expires <= ? AND expired = ?', Time.now, false ) }
 
 	def self.search(search)

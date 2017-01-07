@@ -1,7 +1,7 @@
 
 <section id="graph-section" class="clearfix">
 
-	<h1><%= pluralize(link_count(@link), 'view')%>  for @<%= @link.code == "" ? "expired" : @link.code %></h1>
+	<h1><%= pluralize(link_count(@link), 'view')%>  for @<%= @link.code %></h1>
 
 	<h2><%= @link.title %></h2>	
 

@@ -6,22 +6,21 @@ class Code < ActiveRecord::Base
 	scope :available, -> { where(available: true) }
 	
 	# On creation of a new link, a new code is generated dependng on the subscription chosen.
-	def self.gen_code
+	def self.gen_code(option)
       #Count total codes generated and then compare to total producable codes to see how short on codes we are.
       codes = Code.count 
       # Use the following in some way to facilitate subscription tiers.
-      #if current_user.basic
+      case option
+      when 0..1
         bottom = 100000
         top = 999999
-      #elsif current_user.bronze
-        #bottom = 10000
-        #top = 99999
-      #elsif current_user.silver
-        #bottom = 10000
-        #top = 99999
-      #elsif current_user.gold
-        #bottom = 1000
-        #top = 9999
+      when 2
+        bottom = 10000
+        top = 99999
+      when 3
+        bottom = 1000
+        top = 9999
+      end
       #elsif current_user.platinum
         #bottom = 999
         #top = 100

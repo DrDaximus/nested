@@ -1,0 +1,18 @@
+<h2>User Account</h2>
+Created: <%= @user.created_at.strftime("%d %b %Y at %H:%M")%><br><br>
+
+Email: <%= @user.email %><br><br>
+
+First Name: <%= @user.name%><br>
+Last Name: <%= @user.lastname%><br><br>
+
+Links to date: <%= @user.links.count%><br>
+Active: <%= @user.links.active.count %><br>
+Expired: <%= @user.links.count - @user.links.active.count %><br><br>
+
+
+
+  
+
+
+

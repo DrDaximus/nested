@@ -1,10 +1,11 @@
 
 <div class="fetch-bg">
 	<div class="fetch-wrapper">
-
+		
+		<div class="welcome-logo"><%= image_tag("flat-logo.png", :alt => "Nested Logo")%></div> 
 		<div id="logo">Nested</div>
 
-		<div id="title">SUPER EASY LINKS</div>
+		<div id="title">super easy links</div>
 
 			<%= form_tag(root_path, :method => "get", id: "search-form") do %>
 		
@@ -25,10 +26,7 @@
 			<div class="mylinks">
 			<% if user_signed_in? %>
 				<%= link_to links_path do %>
-				<div><%= current_user.name %>'s Nest</div>
-				<% end %>
-				<%= link_to edit_user_registration_path do %>
-				<div><%= current_user.name %>'s Account</div>
+					<%= current_user.name %>'s Nest
 				<% end %>
 			<% else %>
 				<%= link_to "Sign in", new_user_session_path %> |
@@ -37,3 +35,4 @@
 		</div>
 	</div>
 </div>
+

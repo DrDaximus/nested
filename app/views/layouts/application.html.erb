@@ -1,87 +1,76 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Nested</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-</head>
+  <head>
+    <title>Nested</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'https://js.stripe.com/v2/', 'application', 'data-turbolinks-track' => true %>
+    <%= tag :meta, :name => "stripe-key", :content => Rails.configuration.stripe[:publishable_key] %>
+    <%= csrf_meta_tags %>
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  </head>
 
   <body>
-    
-    <% if !current_page?(root_path) %>
-
-    <header id="top_header" class="clearfix">
-
-    <div class="wrapper">
-      
-      <%= link_to root_path do %>
-        <h1 class="logo">Nested<small>beta</small></h1>
-      <% end %>
-      
-      <nav id="main_nav">
-
-      <% if user_signed_in? %>
-
-        <%= link_to links_path, title:  "'s Home" do %>
-          <i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;
-        <% end %> 
-
-        <%= link_to root_path, title: "Search global codes" do %>
-          <i class="fa fa-crosshairs fa-lg"></i>&nbsp;&nbsp;
-        <% end %> 
-
-        <%= link_to destroy_user_session_path, title: "Sign out " + current_user.email, :method => :delete do %>
-          <i class="fa fa-sign-out fa-lg"></i>&nbsp;&nbsp;
-        <% end %>
-
-      <% else %>
-
-        <%= link_to "sign in", new_user_session_path %> |
-        <%= link_to "sign up", new_user_registration_path %>
-
-      <% end %>
-
-      </nav>
-    </div>
-
-    </header>
-
-  <% end %>
-
-  <% if notice %>
 
     <% if !current_page?(root_path) %>
-      <div class="banner-alert alert-success notice-drop" id="notice">
-        <%= notice %>
-      </div>
-    <% else %>
-      <div class="banner-alert alert-success" id="notice">
-        <%= notice %>
-      </div>
+      <header id="top_header" class="clearfix">
+        <div class="wrapper">
+          <div class="row">
+            <div class="col-xs-4">
+              <%= link_to root_path do %>
+                <h1 class="logo">Nested<small>beta</small></h1>
+              <% end %>
+            </div>
+            <div class="col-xs-4">
+              <div class="main-logo"><%= image_tag("main-logo.png", :alt => "Nested Logo", size: "80") %></div> 
+            </div>
+            <div class="col-xs-4">
+              <nav id="main_nav">
+                <% if user_signed_in? %>
+                  <%= link_to links_path, title:  "'s Home" do %>
+                    <i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;
+                  <% end %> 
+                  <%= link_to root_path, title: "Search global codes" do %>
+                    <i class="fa fa-crosshairs fa-lg"></i>&nbsp;&nbsp;
+                  <% end %> 
+                  <%= link_to destroy_user_session_path, title: "Sign out " + current_user.email, :method => :delete do %>
+                    <i class="fa fa-sign-out fa-lg"></i>&nbsp;&nbsp;
+                  <% end %>
+                <% else %>
+                  <%= link_to "sign in", new_user_session_path %> |
+                  <%= link_to "sign up", new_user_registration_path %>
+                <% end %>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </header>
     <% end %>
 
-  <% elsif alert %>
+    <% if notice %>
+      <%  unless current_page?(root_path) %>
+        <div class="banner-alert alert-success notice-drop" id="notice">
+          <%= notice %>
+        </div>
+      <% else %>
+        <div class="banner-alert alert-success" id="notice">
+          <%= notice %>
+        </div>
+      <% end %>
+    <% elsif alert %>
+      <% unless current_page?(root_path) %>
+        <div class="banner-alert alert-danger notice-drop" id="alert">
+          <%= alert %>
+        </div>
+       <% else %>
+        <div class="banner-alert alert-danger" id="alert">
+          <%= alert %>
+        </div>
+       <% end %>
+    <% end %>
 
-    <% if !current_page?(root_path) %>
-      <div class="banner-alert alert-danger notice-drop" id="alert">
-        <%= alert %>
-      </div>
-     <% else %>
-      <div class="banner-alert alert-danger" id="alert">
-        <%= alert %>
-      </div>
-     <% end %>
-
-  <% end %>
-
-  <div id="yield_wrapper">
-
-    <%= yield %>
-
-  </div>
-
+    <div id="yield_wrapper">
+      <%= yield %>
+    </div>
   </body>
 </html>
 

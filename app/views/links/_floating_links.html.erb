@@ -1,0 +1,42 @@
+<div class="floating-links" id="float-<%=link.id%>">
+  <div class="left-links">
+    <div class="link-wrap">
+      <div class="circle-link <%= 'hide' if link.expired %>" >
+        <a class="fa fa-paper-plane-o fa-lg fa-flip-horizontal" title="Send Link"></a>
+      </div>
+    </div>
+    <div class="link-wrap">
+      <div class="circle-link left-mid <%= 'hide' if link.expired %>">
+        <a class="fa fa-star-o fa-lg" title="Favourite"></a>
+      </div>
+    </div>
+    <div class="link-wrap">
+      <%= link_to edit_link_path(link) do%> 
+        <div class="circle-link <%= 'hide' if link.expired %>">
+          <i class="fa fa-sliders fa-lg" title="Edit link"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <div class="right-links">
+    <div class="link-wrap">
+      <div class="circle-link <%= 'hide' if link.expired %>">
+        <a class="fa fa-clock-o fa-lg" title="End Subscription"></a>
+      </div>
+    </div>
+    <div class="link-wrap">
+      <%= link_to link do %>
+        <div class="circle-link right-mid">
+          <i class="fa fa-line-chart fa-lg" title="Link stats"></i>
+        </div>
+      <% end %>
+    </div>
+    <div class="link-wrap">
+      <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
+        <div class="circle-link"> 
+          <i class="fa fa-times fa-lg" title="Delete link"></i>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

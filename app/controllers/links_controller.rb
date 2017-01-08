@@ -7,6 +7,10 @@ class LinksController < ApplicationController
   # GET /links.json
   def index
     @links = current_user.links.all.order(subscribe_opt: :desc, expires: :desc)
+    @basic = Stripe::Plan.retrieve("basic")
+    @silver = Stripe::Plan.retrieve("silver")
+    @bronze = Stripe::Plan.retrieve("bronze")
+    @gold = Stripe::Plan.retrieve("gold")
   end
 
   def preview_link
@@ -38,9 +42,12 @@ class LinksController < ApplicationController
     @link = current_user.links.new(link_params)
     find_code
     respond_to do |format|
-      if @link.save 
-        subscription_tasks(@link)
-        code_tasks(@code)
+      @coupon = @link.coupon if @link.coupon.present?
+      @token = params[:stripeToken]
+      if @link.save_with_payment(current_user, @token, @coupon)
+        # Confirm assigned code.
+        @code.available = false
+        @code.save
         format.html { redirect_to @link, notice: 'Link was successfully created.' }
         format.json { render :show, status: :created, location: @link }
       else
@@ -48,52 +55,6 @@ class LinksController < ApplicationController
         format.json { render json: @link.errors, status: :unprocessable_entity }
       end
     end
-  end
-
-  def code_tasks(code)
-    code.available = false
-    code.save
-  end
-
-  def subscription_tasks(link)
-    if link.hold_token.present?
-      current_user.token = link.hold_token
-      current_user.save
-      customer = Stripe::Customer.retrieve(current_user.stripeid)
-      customer.source = link.hold_token # obtained with checkout
-      customer.save
-    end
-    # Determin Subscription Type and set link expiry. Initialise subscription.
-    sub_expire = (Time.now + 100.years)
-    case link.subscribe_opt
-      when 0
-        link.expires = Time.now + 24.hours
-        sub_id = "NestBasic"
-      when 1
-        link.expires = sub_expire
-        sub_id = "6D"
-      when 2
-        link.expires = sub_expire
-        sub_id = "5D"
-      when 3
-        link.expires = sub_expire
-        sub_id = "4D"
-    end
-    # Check customer has been created on Stripe and create if not. Assign customer stripe_id to customer_id.
-    unless current_user.subscribed
-      customer = Stripe::Customer.create(:email => current_user.email)
-      customer_id = customer.id
-      current_user.subscribed = true 
-      current_user.stripeid = customer_id
-      current_user.save 
-    else
-      customer_id = current_user.stripeid
-    end
-      # Create subscription on Stripe using customer_id, plan and code.
-      @subscription = Stripe::Subscription.create(:customer => customer_id, :plan => sub_id, :metadata => {"code" => @link.code})
-      # Save subscription id to link.
-      link.subscriptionid = @subscription.id
-      link.save
   end
 
   # PATCH/PUT /links/1
@@ -118,19 +79,15 @@ class LinksController < ApplicationController
       @code.destroy
       end_subscription(@link)
     end
+    #sub_opt = @link.subscribe_opt
     @link.destroy
     respond_to do |format|
-      format.html { redirect_to links_url, notice: 'Link was successfully destroyed.' }
+      format.html { redirect_to links_url, notice: "Link and any associated subscription was successfully removed." }
       format.json { head :no_content }
     end
   end
 
   private
-
-    def end_subscription(link)
-      subscription = Stripe::Subscription.retrieve(link.subscriptionid)
-      subscription.delete
-    end
 
     def clean_up
       expire_links
@@ -143,12 +100,17 @@ class LinksController < ApplicationController
       links.each do |link|
         code = Code.where(code: link.code).first
         code.destroy
-        end_subscription(@link)
+        end_subscription(link)
         link.expired = true
         link.code = "expired"
         link.subscriptionid = nil
         link.save
       end  
+    end
+
+    def end_subscription(link)
+      subscription = Stripe::Subscription.retrieve(link.subscriptionid)
+      subscription.delete
     end
 
     def find_code
@@ -162,6 +124,6 @@ class LinksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def link_params
-      params.require(:link).permit(:title, :link, :code, :goal, :subscribe_opt, :expires, :expired, :hold_token)
+      params.require(:link).permit(:title, :link, :code, :goal, :subscribe_opt, :expires, :expired, :coupon)
     end
 end

@@ -1,83 +1,51 @@
-
-
-    <div class="left-links">
-      <div class="circle-link <%= 'expired-btn' if link.expired %>" >
-        <a class="fa fa-paper-plane-o fa-lg fa-flip-horizontal" title="Send Link"></a>
-      </div>
-      <div class="circle-link left-mid <%= 'expired-btn' if link.expired %>">
-        <a class="fa fa-star-o fa-lg" title="Favourite"></a>
-      </div>
-      <div class="circle-link <%= 'expired-btn' if link.expired %>">
-        <%= link_to edit_link_path(link) do%> 
-          <i class="fa fa-sliders fa-lg" title="Edit link"></i>
-        <% end %>
+<div class="details">
+  <div class="link-url">
+    <a href="<%=link.link %>"><%= link.link %></a>
+  </div>
+  <div class="link-desc">
+    <b>Link Basics</b>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Created
+          <div class="dial-info">
+            <span>
+              <span class="date"><%= link.created_at.strftime("%d/%m/%y") %></span><br>
+              <span class="time"><%= link.created_at.strftime("%H:%M") %></span> 
+            </span>
+          </div>
+        </div>     
       </div>
     </div>
-    <div class="details">
-      <div class="link-url">
-          <a href="<%=link.link %>"><%= link.link %></a>
-        </div>
-        
-        <div class="link-desc">
-          Link Description
-        </div>
-        
-        <div class="row">
-          <div class="col-xs-4 dial-container">
-            <div class="dial">
-              <div class="dial-wrapper">
-                Created
-                <div class="dial-info">
-                  <span>
-                    <span class="date"><%= link.created_at.strftime("%d/%m/%y") %></span><br>
-                    <span class="time"><%= link.created_at.strftime("%H:%M") %></span> 
-                  </span>
-                </div>
-              </div>     
-            </div>
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Vistis
+          <div class="dial-info">
+            <%= link_count(link) %>
           </div>
-          <div class="col-xs-4 dial-container">
-            <div class="dial">
-              <div class="dial-wrapper">
-                Vistis
-                <div class="dial-info">
-                  <%= link_count(link) %>
-                </div>
-              </div> 
-            </div>
-          </div>
-          <div class="col-xs-4 dial-container">
-            <div class="dial">
-              <div class="dial-wrapper">
-                Target
-                <div class="dial-info">
-                  <%= link.goal == 0 ? "-" : link.goal %>
-                </div>  
-              </div>
-            </div>
-          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Target
+          <div class="dial-info">
+            <%= link.goal == 0 ? "-" : link.goal %>
+          </div>  
         </div>
+      </div>
+    </div>
+  </div>
+  <div class="link-expiry">
+    <%=link_expiry(link)%>
+  </div>
+</div>
 
-        <div class="link-expiry">
-          <%=link_expiry(link)%>
-        </div>
-      </div>
-      <div class="right-links">
-        <div class="circle-link <%= 'expired-btn' if link.expired %>">
-          <a class="fa fa-clock-o fa-lg" title="Extend Link"></a>
-        </div>
-        <div class="circle-link right-mid">
-          <%= link_to link do %>
-            <i class="fa fa-line-chart fa-lg" title="Link stats"></i>
-          <% end %>
-        </div>
-        <div class="circle-link"> 
-          <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
-            <i class="fa fa-times fa-lg" title="Delete link"></i>
-          <% end %>
-        </div>
-      </div>
- 
+<%= render "floating_links", link: link %>
 
 
 

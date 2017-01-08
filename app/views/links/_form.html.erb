@@ -48,26 +48,24 @@
     <% end %>
   </div>
 
-  <%= f.hidden_field :hold_token, value: params[:stripeToken] %>
+   <div class="form-group coupon form-inline">
+    <%= f.text_field :coupon, class: "form-control coupon", placeholder: "Enter coupon code here" %> 
+    <%= f.submit "Activate Link", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
 
-  <% if current_user.token? || @link.hold_token.present? %>
-    <div class="actions">
-      <%= f.submit "Activate Link", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
-    </div>
-  <% else %>
-    <script
-      src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-      data-email=<%= current_user.email%>
-      data-key="<%=Rails.configuration.stripe[:publishable_key] %>"
-      data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-      data-name="Nested Links"
-      data-description= "Add Payment Method"
-      data-panel-label="Add"
-      data-label="Activate Link"
-      data-allow-remember-me="false">
-    </script>
-    <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
-  <% end %>
+    <% unless @link.subscribe_opt == 0 %>
+      <script
+        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+        data-email=<%= current_user.email%>
+        data-key="<%=Rails.configuration.stripe[:publishable_key] %>"
+        data-image="<%= asset_path 'logo_for_stripe.png' %>"
+        data-name="Nested Links"
+        data-description= "Payment Details"
+        data-panel-label="Add"
+        data-label="Activate Link">
+      </script>
+    <% end %>
+   </div>
+   <p><small><small>Please note that "Free Link" coupons may still require payment details for the sake of subscription processing, however you will not be charged.</small></small></p>
 
 <% end %>
 

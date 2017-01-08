@@ -24,7 +24,7 @@
 						<div class="img-tag">
 							<%= image_tag("sub-tag-1.png", :alt => "Silver", size: "45") %>
 							<div class="sub-title">Silver</div>
-							<div class="sub-price">£2 p/m</div>
+							<div class="sub-price">£<%=@silver.amount/100%> p/m</div>
 							<div class="sub-detail">@123456</div>
 						</div>
 					</div>
@@ -36,7 +36,7 @@
 						<div class="img-tag">
 							<%= image_tag("sub-tag-2.png", :alt => "Bronze", size: "45") %>
 							<div class="sub-title">Bronze</div>
-							<div class="sub-price">£3 p/m</div>
+							<div class="sub-price">£<%=@bronze.amount/100%> p/m</div>
 							<div class="sub-detail">@12345</div>
 						</div>
 					</div>
@@ -48,7 +48,7 @@
 						<div class="img-tag">
 							<%= image_tag("sub-tag-3.png", :alt => "Gold", size: "45") %>
 							<div class="sub-title">Gold</div>
-							<div class="sub-price">£5 p/m</div>
+							<div class="sub-price">£<%=@gold.amount/100%> p/m</div>
 							<div class="sub-detail">@1234</div>
 						</div>
 					</div>

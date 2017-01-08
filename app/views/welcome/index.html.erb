@@ -2,7 +2,7 @@
 <div class="fetch-bg">
 	<div class="fetch-wrapper">
 		
-		<div class="welcome-logo"><%= image_tag("flat-logo.png", :alt => "Nested Logo")%></div> 
+		<div class="welcome-logo"><%= image_tag("tilt-logo.png", :alt => "Nested Logo")%></div> 
 		<div id="logo">Nested</div>
 
 		<div id="title">super easy links</div>
@@ -18,21 +18,21 @@
     	
   		<br>
 
-			<%= submit_tag "Go!", class: "submit-code-btn" %>
+			<%= submit_tag "Fetch!", class: "submit-code-btn" %>
 		
 			<% end %>
-			 
-		
-			<div class="mylinks">
-			<% if user_signed_in? %>
+	</div>
+</div>
+
+<div class="page-links">
+  <% if user_signed_in? %>
 				<%= link_to links_path do %>
-					<%= current_user.name %>'s Nest
-				<% end %>
+					<%= current_user.name %>'s Nest 
+				<% end %> |
+				<%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
 			<% else %>
 				<%= link_to "Sign in", new_user_session_path %> |
 				<%= link_to "Create your own nest", new_user_registration_path %>
 			<% end %>
-		</div>
-	</div>
 </div>
 

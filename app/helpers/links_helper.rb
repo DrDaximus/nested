@@ -22,7 +22,7 @@ module LinksHelper
 	def link_status(link)
 		# Capture error links that recieved no expiry on creation
 		unless link.expires
-			recover_expiry
+			recover_expiry(link)
 		end
 		if link.expired
 			return "expired"
@@ -37,7 +37,7 @@ module LinksHelper
 		# Capture error links that recieved no expiry on creation
 		sub = link.subscribe_opt
 		unless link.expires
-			recover_expiry
+			recover_expiry(link)
 		end
 		unless sub == 0
 			"#{subscription(sub)} Subscription"
@@ -50,7 +50,7 @@ module LinksHelper
 		end
 	end
 
-	def recover_expiry
+	def recover_expiry(link)
 		if link.subscribe_opt = 0
 			link.expires = Time.now + 24.hours
 		else

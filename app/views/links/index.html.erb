@@ -1,32 +1,46 @@
 <div id="link-index-img"></div>
   <div id="nest-title"><%= current_user.name %>'s Nest</div>
-  
- 
+
     <section id="nested_links">
       <% if @links.present? %>
+        <div id="instruction-1" class="<%= 'hide' unless instruct == true %>"><%= image_tag("instruction-1.png", :alt => "arrow")%></div>
         <% @links.order(:code).each do |link| %>
         <div class="link-item <%=link_status(link)%>" id="btn-<%=link.id%>">
           <div class="row">
             <div class="col-xs-1 link-icon">
-                <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
-                  <i class="fa fa-times fa-lg" title="Delete link"></i>
-                <% end %>
+              <%= link_to link, method: :delete, data: { confirm: "Are you sure you wish to delete this expired link along with all its associated data?", title: "Delete Expired Link", commit: "Delete Me", cancel: "Keep Me" } do %>
+                <i class="fa fa-times fa-lg" title="Delete link"></i>
+              <% end %>
               <div class="circle <%= 'hide' if link_status(link) == 'expired' %>">
                 <div class="tag-img"><%= image_tag("sub-tag-#{link.subscribe_opt}.png", :alt => "Nest Type", size: "47") %></div>
               </div>
             </div>
-            <div class="col-xs-8 link-title"><%= link.title %></div>
-            <div class="col-xs-3 link-code">@<%= link.code %></div>
+            <div class="col-xs-8 link-title">
+              <%= link.title %>
+            </div>
+            <div class="col-xs-3 link-code">
+              @<%= link.code %>
+              <% if link.expired == true %>
+                <i class="fa fa-star-o" title="Link Expired"></i>
+              <% elsif link.subscriptionid == nil && link.expired == false || link.subscribe_opt == 0%>
+                <i class="fa fa-star-half-o" title="Link Expiring OR Subscription Ended"></i>
+              <% else %>
+                <i class="fa fa-star" title="Subscription Current"></i>
+              <% end %>
+            </div>
+          </div>
+          <div class="expand-link">
+            <!-- Can add a visual toggle to right of link item here -->
           </div>
         </div>
 
         <script> 
-        $(document).ready(function(){
+          $(document).ready(function(){
             $("#btn-"+<%=link.id%>).click(function(){
                 $("#display-"+<%=link.id%>).slideToggle("slow");
                 /*$("#float-"+<%=link.id%>).fadeToggle("slow");*/
             });
-        });
+          });
         </script>
 
         <div class="link-details <%=link_status(link)%>" id="display-<%=link.id%>">    
@@ -48,8 +62,8 @@
     <%= link_to "#link-choice-modal", "data-toggle" => "modal" do %>
       Create New Link
     <% end %> |
-    <%= link_to edit_user_registration_path do %>
-      Account Settings
+    <%= link_to user_path(current_user) do %>
+      Manage Subscriptions
     <% end %>
 
 

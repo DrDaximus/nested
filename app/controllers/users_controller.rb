@@ -1,11 +1,27 @@
 class UsersController < ApplicationController
 	before_filter :authenticate_user! 
+	before_action :find_user, only: [:show, :cancel_sub]
 
 	def show
+		customer = Stripe::Customer.retrieve(@user.stripeid)
+		@subs = Stripe::Subscription.list(:customer => customer)
+		@canceledsubs = Stripe::Subscription.list(:customer => customer, :status => "canceled")
+		@links = @user.links.order(expires: :desc)
+		@activelinks = @links.active.order(expires: :desc)
+	end
+
+	def cancel_sub
+		@sub_id = params[:format]
+		sub = Stripe::Subscription.retrieve(@sub_id)
+		@link = Link.where(code: sub.metadata.code).first
+		@link.end_subscription
+		redirect_to @user, notice: "Your subscription was succesfully cancelled"
+	end
+
+	private
+
+	def find_user
 		@user = current_user
-			#customer = Stripe::Customer.retrieve(current_user.stripeid)
-    	#customer.source = params[:stripeToken] # obtained with Stripe.js
-    	#customer.save	
 	end
 
 end

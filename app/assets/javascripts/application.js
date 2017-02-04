@@ -17,6 +17,7 @@
 //= require highcharts
 //= require chartkick
 //= require ahoy
+//= require data-confirm-modal
 //= require_tree .
 
 
@@ -25,3 +26,4 @@ setTimeout(function() {
 			$(this).remove();
 		})
 	}, 4500);
+

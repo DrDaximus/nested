@@ -1,0 +1,52 @@
+<div class="link-form-wrapper">
+
+<%= form_for(@link) do |f| %>
+  <% if @link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@link.errors.count, "error") %> prohibited this link from being saved:</h2>
+
+      <ul>
+      <% @link.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="details-wrap <%= subscription(@link.subscribe_opt).downcase %>">
+    <div class="new-link-form-title">
+      <div class="token-tag">
+        <%= image_tag("sub-tag-#{@link.subscribe_opt}.png", :alt => "Silver", size: "80") %>
+      </div> 
+      @<%= @link.code %>
+    </div>
+
+    <h2 id="link-details-title">Edit <%= subscription(@link.subscribe_opt) %> Details</h2>
+    <!-- <iframe id="link-preview" src="<%= @link.link %>"></iframe>-->
+    <div class="field">
+      <%= f.text_field :title, :maxlength => 35, class: "form-control", placeholder: "Enter a short description" %>
+    </div>
+    <div class="field">
+      <div id="url-placeholder">http://www.</div>
+      <%= f.text_field :link, class: "form-control url_field" , placeholder: "Complete Me!", :pattern => "(?!www|https?:\/\/).+", :title => "Do NOT include http(s):// or www. in your entry" %>
+      <div id="url-instruction"><small>Update the url with the address you want to link to.</small></div>
+    </div>
+    <div class="field hits">
+      <div class="hits-label">
+      <b>Hits Target</b><br>
+      <small>(Optional)</small>
+      </div> 
+      <%= f.text_field :goal, class: "form-control hits" %>
+    </div>
+    
+
+
+  </div>
+
+   <div class="form-group">
+    <%= f.submit "Update Link", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
+   </div>
+
+<% end %>
+
+</div>

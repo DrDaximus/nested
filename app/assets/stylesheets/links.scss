@@ -8,9 +8,10 @@
 	box-sizing: border-box;
 }
 
-#link-choice-modal { margin-top: 100px;  }
+#instruction-1 { position: absolute; margin-left: 510px; margin-top: -20px;}
+
 .modal-content { overflow: hidden;}
-.modal-header {background: $lightgrey; color: white; text-align: center; }
+.modal-header {background: $lightgrey; color: white; text-align: center;}
 #options-wrapper { 
 	font-family: $primary_font;
 	a {color: $secondary;}
@@ -33,7 +34,7 @@
 			.sub-detail { padding: 10px 0;}
 		}
 	}
-	.conditions { text-align: center;}
+	.conditions { text-align: center; font-size: 0.8em;}
 }
 .terms{ text-align: center; color: $secondary; font-size: 0.8em}
 
@@ -42,20 +43,17 @@
 	margin: 0 auto; 
 	width: 40%; 
 	color: $secondary;
+	#link-details-title { font-weight: bold;}
 	.details-wrap {
 		padding: 20px 30px;
 		border: solid 2px #A3A5B9;
 		border-radius: 10px;
 		margin: 0 0 10px 0;
-		.card-details {
-			width: 80%;
-			margin: 0 auto;
-			.card-number { width: 100%; input{border-radius: 3px 3px 0 0;}}
-			.card-expiry { float: left; width: 50%; input{border-radius: 0 0 0 3px;} }
-			.cvv {  width: 50%; input{border-radius: 0 0 3px 0;}}
-		}
 		.hits { margin: 0 auto; text-align: center; width: 100px; .hits-label {margin-bottom: 3px;}}
 	}
+	#link_link { padding-left: 90px;}
+	#url-placeholder { position: absolute; margin: 10px 0 0 15px;}
+	#url-instruction {text-align: center; margin-top: 3px;}
 	.basic {background: $basic;}
 	.silver {background: $silver;}
 	.bronze {background: $bronze;}
@@ -63,14 +61,14 @@
 
 	.stripe-button-el { display: none}
 
-	.tag { 
+	.token-tag { 
 		width: 100%;
 		z-index:3000;
 		position: absolute;  
 		top: 9px;
 		left: 0;
 	}
-	.title { 
+	.new-link-form-title { 
 		color: white;
 		text-align: center; 
 		margin-top: 5px; 
@@ -81,6 +79,10 @@
 }
 #stripe-logo { text-align: center}
 #stripe_error { text-align: center; color: $main; padding: 5px 0; font-weight: bold;}
+
+// Edit Form
+
+#link-preview { width: 100%; height: 250px; margin-bottom: 10px; background: white;}
 
 //index styling
 
@@ -143,7 +145,8 @@ h1, h2{
 	color: white;
 	background: $linkItems;
 	font-size: 1.2em;
-	font-weight: bold;	
+	font-weight: bold;
+	cursor: pointer;	
 	.link-icon {
 		a {color: $main; &:hover {color: $secondary;}}
 		.circle { 
@@ -163,10 +166,11 @@ h1, h2{
 	}
 	.link-title {}
 	.link-code { text-align: right;}
+	.expand-link { position: absolute; margin-left: 500px; margin-top: -17px; color: $secondary; cursor: pointer;}
 	}
 
 	.active {}
-	.ending {.link-code {color: $main;}}
+	.ending {.link-code {color: orange;}}
 	.expired {
 		background: $expired-fill;
 		border-color: $lightgrey !important;
@@ -179,96 +183,99 @@ h1, h2{
 }
 .details { width: 100%; margin-top: -5px;}
 .link-details { 
-	height: 220px;
-	background: white !important;
+	height: 221px;
+	background: $lightgrey;
 	margin: 0 auto; 
 	width: 90%; 
 	display: none; 
-	border: solid 2px $linkItems; 
-	border-radius: 0px 0px 25px 25px; 
-	margin-top: -2px; 
-	margin-bottom: 3px; 
-	padding: 20px; }
+	border-radius: 0px 0px 15px 15px; 
+	margin-top: 0px; 
+	margin-bottom: 3px;
+	border: solid 1px $lightgrey; 
+	border-top: none;
+	overflow: hidden;
+}
 
-.link-url {
-	font-size: 0.9em;
+#detail-header {
 	font-weight: bold;
+	padding: 10px;
+	background: $lightgrey;
+	width: 100%;
+	height: 40px;
 	text-align: center;
-	a {color: #71AAC5;}
+	color: white;
 }
+.row-detail { width: 100%; margin-left: 0px !important;}
 
-.link-desc {
-	margin: 5px 0 10px 0;
-	font-size: 0.8em;
-	text-align: center;
-	color: $secondary;
+.detail-container {
+	padding: 10px;
+	background: white;
+	box-shadow:0px 0px 0px 1px $lightgrey inset; 
 }
-
-.dial {
-	font-family: $primary-font;
-	margin: 0 auto;
-	text-align: center;
-	height: 112px;
-	width: 112px;
-	background: rgba(214,255,253,0.18);
-	border: 2px solid #B1B1B1;
-	box-shadow: inset 0 4px 5px 0 #7C7C7C;
-	border-radius: 60px;
-	.dial-wrapper {
-		font-size: 0.8em;
-		padding-top: 25px;
-		color: #B1B1B1;
-	}
-	.dial-info {
-		margin-top: 10px;
-		font-size: 2.3em;
-		color: #71AAC5;
-	.date {font-size: 0.8em}
-	.time {font-size: 0.5em}
-	}
+.title { 
+	width: 100%; 
+	position: absolute; 
+	padding-right: 25px; 
+	padding-top: 5px; 
+	text-align: right; 
+	color: $lightgrey; 
+	font-size: 1.1em;
 }
-
-.link-expiry {
-	margin: 20px 0 0 0;
-	font-size: 0.8em;
-	text-align: center;
-	font-weight: bold;
+.large-detail {
+	height: 70px;
+}
+.mid-detail {
+	height: 40px;
+}
+.target {
+	height: 40px;
+}
+#zeros { position: absolute; color: $superlight; font-size: 3.5em;}
+#visits {
+	position: absolute;
+	background: white;
+	font-size: 3.5em;
 	color: $main;
 }
-
-.floating-links { margin-top: -180px;}
-.left-links { position: absolute; margin-left: -100px;}
-.right-links { position: absolute; margin-left: 460px;}
-.link-wrap {
-	height: 50px; 
-	width: 50px; 
-	margin-bottom: 12px; 
-	a { 
-		color: $secondary;
-		&:hover {
-			text-decoration:none;
-			color: $main;
+.date {
+ 	padding-top: 30px; color: $main; font-size: 0.9em; font-weight: bold;
+}
+#menu {
+	.menu-item {
+		cursor: not-allowed; color: $superlight;
+		padding: 0;
+		text-align: center;
+		a { color: $lightgrey; &:hover { color: $secondary; cursor: pointer;} }
+		.icon {
+			font-size: 1.2em;
+			margin-top: 10px;
+		}
+		.smile-active { color: $appgreen;}
+		.smile-ending { color: orange;}
+		.smile-expired { color: $main;}
+		.smile-status { color: $lightgrey;}
+		.menu-text {
+			font-size: 0.8em;
+			padding-top: 5px;
 		}
 	}
 }
-.circle-link { 
-	background: white;
-	box-shadow: 0px 3px 3px 0 rgba(0,0,0,0.50);
-	height: 50px; 
-	width: 50px; 
-	border-radius: 25px; 
-	border: solid 2px $linkItems; 
-	text-align: center;
-	padding-top: 14px;
-	&:hover { 
-		height: 48px; 
-		width: 48px; 
-		box-shadow: 0px 2px 3px 0 rgba(0,0,0,0.50);
-	}
+#menu-2 { cursor: pointer !important;}
+#target-top {
+	margin-top:5px;
+	font-size: 1.2em;
+	color: $lightgrey;
+	#target-start {}
+	#target-title {text-align: center}
+	#target-end {text-align: right;}
+	.target { color: $secondary;}
 }
-
-.left-mid { margin-left: -20px; }
-.right-mid { margin-left: 20px; }
+#target-bottom {
+	background: #F4F8F6;
+	overflow: hidden;
+	padding: 0;
+}
+.target-bar { background: $appgreen; height: 40px;}
 
 @media only screen and (max-width: 975px) {
 	.row {
@@ -306,6 +313,8 @@ h1, h2{
 		padding-top: 0.5em;
 		font-size: 1.3em;
 	}
+
+	#show-details { width: 400px; margin: 0 auto;}
 	.goal-achieved {
 		position: absolute;
 		z-index: 1000;

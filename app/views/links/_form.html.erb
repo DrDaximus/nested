@@ -17,9 +17,9 @@
 
 
   <div class="details-wrap <%= subscription(@link.subscribe_opt).downcase %>">
-    <div class="title">
-      <div class="tag">
-        <%= image_tag("sub-tag-#{@link.subscribe_opt}.png", :alt => "Silver", size: "80") %>
+    <div class="new-link-form-title">
+      <div class="token-tag">
+        <%= image_tag("sub-tag-#{@link.subscribe_opt}.png", :alt => "Token-Tag", size: "80") %>
       </div> 
       <% if current_page?(controller: 'links', action: 'new') %>
         @<%= @code.code %>
@@ -28,12 +28,14 @@
       <% end %>
     </div>
 
-    <h2><%= subscription(@link.subscribe_opt) %> Details</h2>
+    <h2 id="link-details-title"><%= subscription(@link.subscribe_opt) %> Details</h2>
     <div class="field">
       <%= f.text_field :title, :maxlength => 35, class: "form-control", placeholder: "Enter a short description" %>
     </div>
     <div class="field">
-      <%= f.url_field :link, class: "form-control", placeholder: "Enter a valid url or web address" %>
+      <div id="url-placeholder">http://www.</div>
+      <%= f.text_field :link, class: "form-control url_field" , placeholder: "Complete Me!", :pattern => "(?!www|https?:\/\/).+", :title => "Do NOT include http(s):// or www. in your entry" %>
+      <div id="url-instruction"><small>Complete the url with the address you want to link to.</small></div>
     </div>
     <div class="field hits">
       <div class="hits-label">
@@ -42,15 +44,11 @@
       </div> 
       <%= f.text_field :goal, class: "form-control hits" %>
     </div>
-
-    <% unless current_page?(controller: 'links', action: 'new') %>
-      <iframe src="<%= @link.link %>"></iframe>
-    <% end %>
   </div>
 
-   <div class="form-group coupon form-inline">
-    <%= f.text_field :coupon, class: "form-control coupon", placeholder: "Enter coupon code here" %> 
-    <%= f.submit "Activate Link", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
+    <div class="form-group coupon form-inline">
+    <%= f.text_field :coupon, class: "form-control coupon", placeholder: "Enter coupon code here" unless @link.subscribe_opt == 0 %> 
+    <%= f.submit "Activate Link*", class: "btn btn-success"%> <%= link_to 'Cancel', links_path, class: "btn btn-danger" %>
 
     <% unless @link.subscribe_opt == 0 %>
       <script
@@ -65,7 +63,11 @@
       </script>
     <% end %>
    </div>
-   <p><small><small>Please note that "Free Link" coupons may still require payment details for the sake of subscription processing, however you will not be charged.</small></small></p>
+   <% unless @link.subscribe_opt == 0 %>
+   <p><small><small>*100% free for life promotional links may still require payment details to be given for the sake of our subscription and verification process, however you will only ever be charged (or not charged) as per the conditions of the offer or promotion.</small></small></p>
+   <% else %>
+   <small>*Expires after 24 Hours</small>
+   <% end %>
 
 <% end %>
 

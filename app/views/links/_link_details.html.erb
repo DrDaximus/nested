@@ -1,53 +1,85 @@
-<div class="details">
-  <div class="link-url">
-    <a href="<%=link.link %>"><%= link.link %></a>
+<div class="row row-detail">
+  <div class="col-md-8 detail-container large-detail">
+    <div id="zeros">00000000 </div><div class="title">Visits</div> 
+    <div id="visits"><%= link_count(link) %></div>
   </div>
-  <div class="link-desc">
-    <b>Link Basics</b>
-  </div>
-  <div class="row">
-    <div class="col-xs-4 dial-container">
-      <div class="dial">
-        <div class="dial-wrapper">
-          Created
-          <div class="dial-info">
-            <span>
-              <span class="date"><%= link.created_at.strftime("%d/%m/%y") %></span><br>
-              <span class="time"><%= link.created_at.strftime("%H:%M") %></span> 
-            </span>
-          </div>
-        </div>     
-      </div>
-    </div>
-    <div class="col-xs-4 dial-container">
-      <div class="dial">
-        <div class="dial-wrapper">
-          Vistis
-          <div class="dial-info">
-            <%= link_count(link) %>
-          </div>
-        </div> 
-      </div>
-    </div>
-    <div class="col-xs-4 dial-container">
-      <div class="dial">
-        <div class="dial-wrapper">
-          Target
-          <div class="dial-info">
-            <%= link.goal == 0 ? "-" : link.goal %>
-          </div>  
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="link-expiry">
-    <%=link_expiry(link)%>
+  <div class="col-md-4 detail-container large-detail">
+    <div class="title">Created</div> 
+    <div class="title date">
+      <%= link.created_at.strftime("%b %d %Y") %> 
+      <%= link.created_at.strftime("%H:%M") %>
+    </div> 
   </div>
 </div>
-
-<%= render "floating_links", link: link %>
-
-
-
-
- 
+<div class="row row-detail">
+  <div class="col-md-8 detail-container large-detail">
+    <div class="row" id="menu">
+      <div class="col-md-1"></div>
+      <div class="col-md-2 menu-item" id="menu-1">
+        <div class="icon">
+          <i class="fa fa-power-off fa-lg" title="Switch On/Off"></i>
+        </div>
+        <div class="menu-text">
+          Active
+        </div>
+      </div>
+      <div class="col-md-2 menu-item" id="menu-2">
+        <div class="icon smile-<%=link_status(link)%>">
+          <i class="fa fa-<%= smiley(link_status(link)) %>-o fa-lg" title="<%=link_status(link).upcase%>"></i>
+        </div>
+        <div class="menu-text smile-status">
+          Status
+        </div>
+      </div>
+      <div class="col-md-2 menu-item" id="menu-3">
+        <%= link_to link do %>
+          <div class="icon">
+            <i class="fa fa-line-chart fa-lg" title="Link Statistics"></i>
+          </div>
+          <div class="menu-text">
+            Stats
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-2 menu-item" id="menu-4">
+        <%= link_to_unless link.expired, edit_link_path(link) do %> 
+          <div class="icon">
+            <i class="fa fa-cog fa-lg" title="Edit link"></i>
+          </div>
+          <div class="menu-text">
+            Edit  
+          </div>
+        <% end %>
+      </div>
+      <div class="col-md-2 menu-item" id="menu-5">
+        <%= link_to link, method: :delete, data: { confirm: "This link is active, are you sure you wish to permanently delete it?", title: "Delete Active Link", verify: "delete", verify_text: "Type 'delete' below to confirm that you wish to permanently remove this link, end any associated subscription, and loose all associated data. You will no longer be able to use this link, effective immediately. This action is non-reversable. You will not be charged any future payments for this link!", commit: "Delete Me", cancel: "Keep Me" } do %>
+        <div class="icon">
+          <i class="fa fa-trash fa-lg" title="Delete link"></i>
+        </div>
+        <div class="menu-text">
+          Delete
+        </div>
+        <% end %>
+      </div>
+      <div class="col-md-1"></div>
+    </div>
+  </div>
+  <div class="col-md-4 detail-container large-detail">
+    <div class="title">Expires</div> 
+    <div class="title date"><%=link_expiry(link)%></div> 
+  </div>
+</div>
+<div class="row row-detail">
+  <div class="col-md-12 detail-container mid-detail">
+    <div class="row" id="target-top">
+      <div class="col-md-4 target" id="target-start">0</div>
+      <div class="col-md-4" id="target-title">Target</div>
+      <div class="col-md-4 target" id="target-end"><%= link.goal %></div>
+    </div>
+  </div>
+</div>
+<div class="row row-detail">
+  <div class="col-md-12 detail-container" id="target-bottom">
+    <div class="target-bar" style="width: <%= bar_width(link_count(link), link.goal)%>%"></div>
+  </div>
+</div>

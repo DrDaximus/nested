@@ -1,5 +1,17 @@
 module LinksHelper
 
+	def bar_width(visits, goal)
+		visits = visits.to_d
+		goal = goal.to_d
+		unless goal == 0
+			pc = visits / goal
+			pc = pc * 100
+			pc.round
+		else
+			0
+		end
+	end
+
 	def subscription(option)
 		case option
 		when 0
@@ -26,7 +38,7 @@ module LinksHelper
 		end
 		if link.expired
 			return "expired"
-		elsif Time.now + 1.hour > link.expires
+		elsif Time.now + 6.hours > link.expires
 			return "ending"
 		else 
 			return "active"
@@ -39,13 +51,13 @@ module LinksHelper
 		unless link.expires
 			recover_expiry(link)
 		end
-		unless sub == 0
-			"#{subscription(sub)} Subscription"
+		unless sub == 0 || link.expires <= Time.now + 1.month
+			"N/A"
 		else
 			if Time.now < link.expires
-				"Expires in " + distance_of_time_in_words(Time.now, link.expires) 
+				"in " + distance_of_time_in_words(Time.now, link.expires) 
 			else
-				"expired " + time_ago_in_words(link.expires) + " ago"
+				time_ago_in_words(link.expires) + " ago"
 			end
 		end
 	end

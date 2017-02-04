@@ -9,10 +9,10 @@ class WelcomeController < ApplicationController
         #Create an ahoy event using the gen_id link method as an identifier.
         ahoy.track "Viewed link", @link.gen_id
       	params[:search] = ""
-        @url = @link.link
+        @url = "http://www." + @link.link
         redirect_to @url
       else
-      	flash[:notice] = "Sorry, that code can't be found in the Nest"
+      	flash[:notice] = "Sorry, that code is either invalid or expired. Please check and try again!"
       	params[:search] = ""
       	redirect_to root_path
       end

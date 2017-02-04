@@ -50,10 +50,20 @@ a {color: black; a:active,a:link,a:focus {outline: 0px none; text-decoration: no
 
 /* start of my css */
 
-h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
+h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 
 #yield_wrapper {
 	margin: 65px 0 75px 0;
+}
+
+.content-wrapper {
+	width: 60%;
+	margin: 0 auto;
+}
+
+.modal-dialog { margin-top: 75px !important;}
+.modal-body {
+	p {margin-bottom: 20px;}
 }
 
 .banner-alert {
@@ -143,15 +153,17 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	}
 }
 
+.field_with_errors { width: 100% !important; background-color: $main; border-radius: 5px;}
+
 .form-frame {
 
-		box-shadow: 0px 0px 6px 6px $lightgrey;
+		box-shadow: 0px 2px 4px 2px $lightgrey;
 		padding-top: 2em; 
 		padding-bottom: 2em; 
-		background: $main; 
-		margin-top: 10em; 
+		background: $white; 
+		margin-top: 8em; 
 		border-radius: 10px;
-		color: $white;
+		color: $secondary;
 		.sign-in-btn {
 			font-family: $primary_font;
 			border-radius: 20px;
@@ -163,13 +175,12 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: bold; }
 	font-family: $primary_font;
 	font-size: 1em;
 	text-align: center;
-	color: $white;
-	background: $main;
+	color: $secondary;
 	padding-top: 1.5em;
 	a {
-		color: $white;
+		color: $secondary;
 		&:hover {
-			color: $secondary;
+			color: $main;
 		}
 	}
 }

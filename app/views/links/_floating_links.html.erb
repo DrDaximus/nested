@@ -7,13 +7,13 @@
     </div>
     <div class="link-wrap">
       <div class="circle-link left-mid <%= 'hide' if link.expired %>">
-        <a class="fa fa-star-o fa-lg" title="Favourite"></a>
+        <a class="fa fa-smile-o fa-lg" title="Favourite"></a>
       </div>
     </div>
     <div class="link-wrap">
       <%= link_to edit_link_path(link) do%> 
         <div class="circle-link <%= 'hide' if link.expired %>">
-          <i class="fa fa-sliders fa-lg" title="Edit link"></i>
+          <i class="fa fa-cogs fa-lg" title="Edit link"></i>
         </div>
       <% end %>
     </div>
@@ -32,11 +32,21 @@
       <% end %>
     </div>
     <div class="link-wrap">
-      <%= link_to link, method: :delete, data: { confirm: 'Are you sure?' } do %>
-        <div class="circle-link"> 
-          <i class="fa fa-times fa-lg" title="Delete link"></i>
-        </div>
+      <% unless link_status(link) == 'expired' %>
+        <%= link_to link, method: :delete, data: { confirm: "This link is active, are you sure you wish to permanently delete it?", title: "Delete Active Link", verify: "delete", verify_text: "Type 'delete' below to confirm that you wish to permanently remove this link, end any associated subscription, and loose all associated data. You will no longer be able to use this link, effective immediately. This action is non-reversable. You will not be charged any future payments for this link!", commit: "Delete Me", cancel: "Keep Me" } do %>
+          <div class="circle-link"> 
+            <i class="fa fa-times fa-lg" title="Delete link"></i>
+          </div> 
+        <% end %>
+      <% else %>
+        <%= link_to link, method: :delete, data: { confirm: "Are you sure you wish to delete this expired link along with all its associated data?", title: "Delete Expired Link", commit: "Delete Me", cancel: "Keep Me" } do %>
+          <div class="circle-link"> 
+            <i class="fa fa-times fa-lg" title="Delete link"></i>
+          </div>
+        <% end %>
       <% end %>
+       
+      
     </div>
   </div>
 </div>

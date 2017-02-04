@@ -6,7 +6,7 @@ class LinksController < ApplicationController
   # GET /links
   # GET /links.json
   def index
-    @links = current_user.links.all.order(subscribe_opt: :desc, expires: :desc)
+    @links = current_user.links.all.order(expired: :asc, subscribe_opt: :desc, expires: :desc)
     @basic = Stripe::Plan.retrieve("basic")
     @silver = Stripe::Plan.retrieve("silver")
     @bronze = Stripe::Plan.retrieve("bronze")
@@ -48,8 +48,8 @@ class LinksController < ApplicationController
         # Confirm assigned code.
         @code.available = false
         @code.save
-        format.html { redirect_to @link, notice: 'Link was successfully created.' }
-        format.json { render :show, status: :created, location: @link }
+        format.html { redirect_to links_path, notice: 'Link was successfully created.' }
+        format.json { render :index, status: :created, location: @link }
       else
         format.html { render :new }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -62,8 +62,8 @@ class LinksController < ApplicationController
   def update
     respond_to do |format|
       if @link.update(link_params)
-        format.html { redirect_to @link, notice: 'Link was successfully updated.' }
-        format.json { render :show, status: :ok, location: @link }
+        format.html { redirect_to links_path, notice: 'Link was successfully updated.' }
+        format.json { render :index, status: :ok, location: @link }
       else
         format.html { render :edit }
         format.json { render json: @link.errors, status: :unprocessable_entity }
@@ -77,7 +77,7 @@ class LinksController < ApplicationController
     unless @link.expired?
       find_code
       @code.destroy
-      end_subscription(@link)
+      @link.end_subscription if @link.subscriptionid
     end
     #sub_opt = @link.subscribe_opt
     @link.destroy
@@ -98,19 +98,8 @@ class LinksController < ApplicationController
     def expire_links
       links = current_user.links.expired
       links.each do |link|
-        code = Code.where(code: link.code).first
-        code.destroy
-        end_subscription(link)
-        link.expired = true
-        link.code = "expired"
-        link.subscriptionid = nil
-        link.save
+        link.expire_link
       end  
-    end
-
-    def end_subscription(link)
-      subscription = Stripe::Subscription.retrieve(link.subscriptionid)
-      subscription.delete
     end
 
     def find_code

@@ -19,6 +19,7 @@ gem 'font-awesome-rails', '~> 4.5', '>= 4.5.0.1'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 gem 'ahoy_matey'
 gem 'activeuuid', '>= 0.5.0'
+gem 'data-confirm-modal'
 
 #Graphs
 gem 'groupdate'

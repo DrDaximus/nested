@@ -8,9 +8,45 @@
 	<% if link_count(@link) >= @link.goal && @link.goal != 0 %>
 		<div class="goal-achieved"></div>
 	<% end %>
-
-
 	
+	<div id="show-details">
+		<div class="row">
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Created
+          <div class="dial-info">
+            <span>
+              <span class="date"><%= @link.created_at.strftime("%d/%m/%y") %></span><br>
+              <span class="time"><%= @link.created_at.strftime("%H:%M") %></span> 
+            </span>
+          </div>
+        </div>     
+      </div>
+    </div>
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Vistis
+          <div class="dial-info">
+            <%= link_count(@link) %>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <div class="col-xs-4 dial-container">
+      <div class="dial">
+        <div class="dial-wrapper">
+          Target
+          <div class="dial-info">
+            <%= @link.goal == 0 ? "-" : @link.goal %>
+          </div>  
+        </div>
+      </div>
+    </div>
+  </div>
+	</div>
+
 	<div class="graphs">
 		<div class="row">
 			<div class="col-md-4 graph">

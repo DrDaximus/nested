@@ -6,7 +6,11 @@
 
 n {font-family: 'Arial Black', cursive;}
 
-.welcome-logo	{ top: 50px; position: absolute;}
+#welcome-logo	{ top: 50px; position: absolute;}
+#dot-line	{ left: 150px; top: 350px; position: absolute;}
+#arrow-img {position:absolute; margin-left: 450px; margin-top: -120px;}
+#own-img {position:fixed; width:100%; margin-top: -95px;}
+#scroll{position:absolute; left: 50px; bottom: 65px;}
 
 .fetch-bg {
 	margin-top: -65px;
@@ -92,6 +96,7 @@ n {font-family: 'Arial Black', cursive;}
 	.mylinks {
 		margin-top: 1em;
 		color: $main;
+		background: white;
 		a {
 		color: $secondary;
 		font-size: 1.2em;
@@ -101,6 +106,49 @@ n {font-family: 'Arial Black', cursive;}
 			color: $secondary;
 	 	}
 	}
+
+#landing-wrapper {
+	color: #535353;
+	font-family: Noteworthy;
+	line-height: 30px;
+	position: absolute;
+	top: 100%;
+	width: 100%;
+}
+#bus-bg { 
+	margin-top: 50px;
+	position: absolute; 
+	width: 100%; 
+	left: 0; 
+	background: $superlight;
+	height:300px;
+}
+#landing-tokens-bg { 
+	position: absolute; 
+	width: 100%; 
+	left: 0; 
+	background: $main;
+	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);}
+.cross-arrow { position: absolute; top: -20px; left: 250px;}
+#landing-token-spacer { height: 340px;}
+#landing-tokens { 
+	margin: 0 auto;
+	width: 900px;
+	text-align: center;
+	padding-top: 35px;
+	height: 340px;
+	
+}
+#blackboard { margin-top: 40px;}
+.landing-content {width: 900px; margin: 0 auto; }
+.landing-detail { margin-top: 100px;}
+#landing-bottom-margin { height: 100px;}
+
+@media only screen and (max-width: 1100px) {
+
+	#welcome-logo	{ display: none;}
+	#arrow-img {display: none;}
+}
 
 @media only screen and (max-width: 768px) {
 
@@ -166,3 +214,4 @@ n {font-family: 'Arial Black', cursive;}
 		a{ font-size: 1.1em; }
 	}
 }
+

@@ -33,7 +33,7 @@ class Link < ActiveRecord::Base
     	case self.subscribe_opt
 	      when 0
 	        self.expires = Time.now + 24.hours
-	        sub_id = "Basic"
+	        sub_id = "basic"
 	      when 1
 	        self.expires = sub_expire
 	        sub_id = "silver"
@@ -55,6 +55,24 @@ class Link < ActiveRecord::Base
   	errors.add :base, "There was a problem with your subscription."
   	errors.add :base, "#{e.message}"
   	false
+	end
+
+	def end_subscription
+    sub = Stripe::Subscription.retrieve(self.subscriptionid)
+  	@expire_at = Time.at(sub.current_period_end)
+    sub.delete
+    self.subscriptionid = nil
+    self.expires = @expire_at if self.subscribe_opt != 0
+    self.save
+  end
+
+	def expire_link
+		code = Code.where(code: self.code).first
+    code.destroy
+    self.end_subscription if self.subscriptionid
+    self.expired = true
+    self.code = "expired"
+    self.save
 	end
 
 end

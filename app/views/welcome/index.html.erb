@@ -2,8 +2,11 @@
 <div class="fetch-bg">
 	<div class="fetch-wrapper">
 		
-		<div class="welcome-logo"><%= image_tag("tilt-logo.png", :alt => "Nested Logo")%></div> 
-		<div id="logo">Nested</div>
+		<div id="logo">
+			Nested
+			<div id="welcome-logo"><%= image_tag("tilt-logo.png", :alt => "Nested Logo")%></div> 
+			<div id="dot-line"><%= image_tag("dotline.png", :alt => "dotline")%></div> 
+		</div>
 
 		<div id="title">super easy links</div>
 
@@ -13,18 +16,77 @@
 					<div class="input-group">
 					<div class="input-group-addon">@</div>
 						<%= text_field_tag :search, params[:search], placeholder: "enter code here", :required => true, oninvalid: "this.setCustomValidity('Please enter a Nested code')", oninput: "setCustomValidity('')", class: "form-control code-input"  %>
+						<div id="arrow-img"><%= image_tag("arrow.png", :alt => "arrow")%></div> 
 					</div>
-				</div>			
+				</div>		 		
     	
   		<br>
 
-			<%= submit_tag "Fetch!", class: "submit-code-btn" %>
+			<%= submit_tag "Go Fetch!!!", class: "submit-code-btn" %>
 		
 			<% end %>
 	</div>
 </div>
 
+<div id="landing-wrapper">
+	<div class="landing-content">
+		<div id="landing-tokens-bg">
+			<div class="row" id="landing-tokens">
+				<div class="col-md-4">
+					<div id="token-1"><%= image_tag("token-1.png", :alt => "code")%></div>
+					<div class="cross-arrow"><%= image_tag("cross-arrow.png", :alt => "cross arrow")%></div>
+				</div>
+				<div class="col-md-4">
+					<div id="token-2"><%= image_tag("token-2.png", :alt => "asign")%></div>
+					<div class="cross-arrow"><%= image_tag("cross-arrow.png", :alt => "cross arrow")%></div>
+				</div>
+				<div class="col-md-4">
+					<div id="token-3"><%= image_tag("token-3.png", :alt => "share")%></div>
+				</div>
+			</div>
+		</div>
+		<div id="landing-token-spacer"></div>
+		<div class="row landing-detail">
+			<div class="col-md-5"><div id="blackboard"><%= image_tag("blackboard.png", :alt => "blackboard")%></div> </div>
+			<div class="col-md-7 landing-text">
+				<h2> Education </h2>
+				So often in a classroom or lecture theatre, or when giving a presentation, there is a need to share information wihout the ablility to 'send' a url or link to the viewers. So we may resort to displaying a url on a screen or board for our audience to copy or type into a web browser. This is never easy, especially with a long or complex url.<br><br>
+
+				Imagine getting a class to navigate via a whiteboard to... <br>
+				“www.awebsite.com/thisrandompage/53ab54db373d78c83.html”... Hmmm!!!<br><br>
+				Instead, assign the url to a Nested 4-6 digit code, and just share that code with your audience. All your students need to remember is that they need to navigate to 'nested.link' whenever they see a Nested code. Simple!
+		</div>
+		</div>
+		<div id="bus-bg"></div>
+			<div class="row landing-detail">
+				<div class="col-md-7">
+					<h2> Commercial </h2>
+					Much the same as in education, there are many times when you want to communicate a url or link to a physical audience or viewer, yet we don't always have the ability to 'send' to our audience, the link belonging to our marketing media, website, or document. <br><br>
+
+					Imagine a viewer having to remember even a shortened url from the side of a passing bus, or billboard. Even within a magazine, it can be awkward to relay a url unless very short. Well with Nested, you can assign any url, no matter the length to a simple 4-6 digit code, and then use that to generate visits to your media. The Nested symbol has been designed to become very recognisable, and the more it's used, the more people will know exaclty what a Nested code is. What's better is, Nested provides the ability to monitor and assess usage of your codes. 
+				</div>
+				<div class="col-md-5">
+					<div id="bus"><%= image_tag("bus.png", :alt => "blackboard")%></div>
+				</div>
+			</div>
+
+		<div class="row landing-detail">
+			<div class="col-md-5">
+				<div id="facebook"><%= image_tag("facebook.png", :alt => "blackboard")%></div>
+			</div>
+			<div class="col-md-7">
+				<h2> Personal </h2>
+				You have a unique phone number, you have a unique email address, you have a unique home address, so why not have a unique web ID? <br><br> 
+
+				As an example, imagine how easy it would be to asign your Facebook profile page address to a simple number such as @ 1234. Then, instead of having to give your name and a description to people when asking them to hunt you down on Facebook, given the dozens or more poeople in the world that share your name, you could just share your own unique Nested number instead. Genius!
+			</div>
+		</div>
+	</div>
+	<div id="landing-bottom-margin"></div>
+</div>
+
 <div class="page-links">
+	<div id="own-img"><%= image_tag("own-nest.png", :alt => "own") unless user_signed_in? %></div>
   <% if user_signed_in? %>
 				<%= link_to links_path do %>
 					<%= current_user.name %>'s Nest 
@@ -35,4 +97,18 @@
 				<%= link_to "Create your own nest", new_user_registration_path %>
 			<% end %>
 </div>
+
+<script>
+var $own = $('#own-img');
+$(window).scroll(function () {
+    if ($(this).scrollTop() < 10) {
+        $own.fadeIn();
+    } else if ($own.is(':visible')) {
+        $own.fadeOut();
+    }
+});
+</script
+
+
+
 

@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :cancel_sub]
 
 	def show
-		if @user.stripid 
+		if @user.stripeid 
 			customer = Stripe::Customer.retrieve(@user.stripeid)
 			@subs = Stripe::Subscription.list(:customer => customer)
 			@canceledsubs = Stripe::Subscription.list(:customer => customer, :status => "canceled")

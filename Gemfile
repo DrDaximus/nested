@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'rails', '4.2.5.1'
 gem 'pg'
@@ -24,6 +25,9 @@ gem 'data-confirm-modal'
 #Graphs
 gem 'groupdate'
 gem "chartkick"
+
+#for heroku
+gem 'rails_12factor'
 
 
 group :development, :test do

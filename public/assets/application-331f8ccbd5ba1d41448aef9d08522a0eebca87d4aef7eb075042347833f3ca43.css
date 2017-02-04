@@ -2363,39 +2363,35 @@
 }
 
 /* line 12, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
-#link-choice-modal {
-  z-index: 10000;
-}
-
-/* line 13, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .modal-content {
   overflow: hidden;
 }
 
-/* line 14, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 13, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .modal-header {
   background: #D3D3D3;
   color: white;
   text-align: center;
+  font-family: "Lilita One", cursive;
 }
 
-/* line 15, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 14, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper {
   font-family: "Lilita One", cursive;
   margin: 0 auto;
   width: 90%;
   padding: 20px;
 }
-/* line 17, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 16, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper a {
   color: #616161;
 }
-/* line 21, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 20, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options {
   text-align: center;
   margin: 20px auto;
 }
-/* line 24, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 23, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option {
   height: 120px;
   border-radius: 20px;
@@ -2403,105 +2399,105 @@
   background: #fff;
   box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.5);
 }
-/* line 25, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 24, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option .img-tag {
   position: relative;
   top: -22px;
 }
-/* line 31, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 30, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option:hover {
   box-shadow: 0 2px 4px 0 #EC6A6A;
 }
-/* line 32, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 31, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option .sub-title {
   margin: 4px 0;
 }
-/* line 33, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 32, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option .sub-price {
   padding: 5px 0;
   font-size: 1.2em;
   color: #EC6A6A;
 }
-/* line 34, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 33, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .options .option .sub-detail {
   padding: 10px 0;
 }
-/* line 37, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 36, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #options-wrapper .conditions {
   text-align: center;
   font-size: 0.8em;
 }
 
-/* line 39, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 38, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .terms {
   text-align: center;
   color: #616161;
   font-size: 0.8em;
 }
 
-/* line 41, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 40, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper {
   padding: 10px;
   margin: 0 auto;
   width: 40%;
   color: #616161;
 }
-/* line 46, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 45, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper #link-details-title {
   font-weight: bold;
 }
-/* line 47, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 46, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .details-wrap {
   padding: 20px 30px;
   border: solid 2px #A3A5B9;
   border-radius: 10px;
   margin: 0 0 10px 0;
 }
-/* line 52, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 51, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .details-wrap .hits {
   margin: 0 auto;
   text-align: center;
   width: 100px;
 }
-/* line 52, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 51, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .details-wrap .hits .hits-label {
   margin-bottom: 3px;
 }
-/* line 54, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 53, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper #link_link {
   padding-left: 90px;
 }
-/* line 55, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 54, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper #url-placeholder {
   position: absolute;
   margin: 10px 0 0 15px;
 }
-/* line 56, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 55, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper #url-instruction {
   text-align: center;
   margin-top: 3px;
 }
-/* line 57, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 56, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .basic {
   background: #71AAC5;
 }
-/* line 58, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 57, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .silver {
   background: #D8D8D8;
 }
-/* line 59, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 58, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .bronze {
   background: #DCAC7B;
 }
-/* line 60, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 59, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .gold {
   background: #E7D87F;
 }
-/* line 62, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 61, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .stripe-button-el {
   display: none;
 }
-/* line 64, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 63, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .token-tag {
   width: 100%;
   z-index: 3000;
@@ -2509,7 +2505,7 @@
   top: 9px;
   left: 0;
 }
-/* line 71, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 70, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-form-wrapper .new-link-form-title {
   color: white;
   text-align: center;
@@ -2519,12 +2515,12 @@
   font-size: 2em;
 }
 
-/* line 80, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 79, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #stripe-logo {
   text-align: center;
 }
 
-/* line 81, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 80, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #stripe_error {
   text-align: center;
   color: #EC6A6A;
@@ -2532,7 +2528,7 @@
   font-weight: bold;
 }
 
-/* line 85, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 84, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #link-preview {
   width: 100%;
   height: 250px;
@@ -2540,7 +2536,7 @@
   background: white;
 }
 
-/* line 89, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 88, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #link-index-img {
   position: fixed;
   top: 0;
@@ -2552,7 +2548,7 @@
   width: 100vw;
 }
 
-/* line 100, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 99, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #nest-title {
   z-index: 1000;
   position: fixed;
@@ -2566,25 +2562,25 @@
   color: #616161;
 }
 
-/* line 114, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 113, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 h1, h2 {
   font-weight: 700;
 }
 
-/* line 118, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 117, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .wrapper {
   width: 90%;
   margin: 0 auto;
 }
 
-/* line 123, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 122, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #nested_links {
   max-width: 505px;
   margin: 0 auto;
   padding-top: 70px;
 }
 
-/* line 129, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 128, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #no-links {
   text-align: center;
   position: absolute;
@@ -2595,7 +2591,7 @@ h1, h2 {
   color: #D3D3D3;
 }
 
-/* line 139, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 138, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item {
   margin-top: 4px;
   width: 100%;
@@ -2608,15 +2604,15 @@ h1, h2 {
   font-weight: bold;
   cursor: pointer;
 }
-/* line 151, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 150, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .link-icon a {
   color: #EC6A6A;
 }
-/* line 151, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 150, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .link-icon a:hover {
   color: #616161;
 }
-/* line 152, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 151, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .link-icon .circle {
   position: absolute;
   text-align: center;
@@ -2630,15 +2626,15 @@ h1, h2 {
   width: 46px;
   border-radius: 50%;
 }
-/* line 164, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 163, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .link-icon .circle .tag-img {
   margin: -6px 0 0 -1px;
 }
-/* line 168, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 167, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .link-code {
   text-align: right;
 }
-/* line 169, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 168, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-item .expand-link {
   position: absolute;
   margin-left: 500px;
@@ -2647,36 +2643,36 @@ h1, h2 {
   cursor: pointer;
 }
 
-/* line 173, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 172, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .ending .link-code {
   color: orange;
 }
 
-/* line 174, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 173, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .expired {
   background: rgba(124, 124, 124, 0.4);
   border-color: #D3D3D3 !important;
 }
-/* line 177, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 176, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .expired .circle {
   color: #D3D3D3;
 }
-/* line 179, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 178, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .expired .expired-btn {
   border-color: #D3D3D3 !important;
 }
-/* line 181, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 180, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .expired .expired-btn a {
   color: #D3D3D3;
 }
 
-/* line 184, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 183, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .details {
   width: 100%;
   margin-top: -5px;
 }
 
-/* line 185, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 184, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .link-details {
   height: 221px;
   background: #D3D3D3;
@@ -2691,7 +2687,7 @@ h1, h2 {
   overflow: hidden;
 }
 
-/* line 199, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 198, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #detail-header {
   font-weight: bold;
   padding: 10px;
@@ -2702,20 +2698,20 @@ h1, h2 {
   color: white;
 }
 
-/* line 208, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 207, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .row-detail {
   width: 100%;
   margin-left: 0px !important;
 }
 
-/* line 210, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 209, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .detail-container {
   padding: 10px;
   background: white;
   box-shadow: 0px 0px 0px 1px #D3D3D3 inset;
 }
 
-/* line 215, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 214, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .title {
   width: 100%;
   position: absolute;
@@ -2726,29 +2722,29 @@ h1, h2 {
   font-size: 1.1em;
 }
 
-/* line 224, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 223, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .large-detail {
   height: 70px;
 }
 
-/* line 227, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 226, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .mid-detail {
   height: 40px;
 }
 
-/* line 230, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 229, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .target {
   height: 40px;
 }
 
-/* line 233, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 232, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #zeros {
   position: absolute;
   color: #F4F8F6;
   font-size: 3.5em;
 }
 
-/* line 234, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 233, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #visits {
   position: absolute;
   background: white;
@@ -2756,7 +2752,7 @@ h1, h2 {
   color: #EC6A6A;
 }
 
-/* line 240, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 239, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .date {
   padding-top: 30px;
   color: #EC6A6A;
@@ -2764,101 +2760,101 @@ h1, h2 {
   font-weight: bold;
 }
 
-/* line 244, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 243, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item {
   cursor: not-allowed;
   color: #F4F8F6;
   padding: 0;
   text-align: center;
 }
-/* line 248, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 247, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item a {
   color: #D3D3D3;
 }
-/* line 248, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 247, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item a:hover {
   color: #616161;
   cursor: pointer;
 }
-/* line 249, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 248, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .icon {
   font-size: 1.2em;
   margin-top: 10px;
 }
-/* line 253, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 252, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .smile-active {
   color: #A3E5A4;
 }
-/* line 254, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 253, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .smile-ending {
   color: orange;
 }
-/* line 255, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 254, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .smile-expired {
   color: #EC6A6A;
 }
-/* line 256, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 255, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .smile-status {
   color: #D3D3D3;
 }
-/* line 257, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 256, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu .menu-item .menu-text {
   font-size: 0.8em;
   padding-top: 5px;
 }
 
-/* line 263, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 262, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #menu-2 {
   cursor: pointer !important;
 }
 
-/* line 264, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 263, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #target-top {
   margin-top: 5px;
   font-size: 1.2em;
   color: #D3D3D3;
 }
-/* line 269, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 268, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #target-top #target-title {
   text-align: center;
 }
-/* line 270, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 269, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #target-top #target-end {
   text-align: right;
 }
-/* line 271, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 270, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #target-top .target {
   color: #616161;
 }
 
-/* line 273, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 272, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #target-bottom {
   background: #F4F8F6;
   overflow: hidden;
   padding: 0;
 }
 
-/* line 278, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 277, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .target-bar {
   background: #A3E5A4;
   height: 40px;
 }
 
 @media only screen and (max-width: 975px) {
-  /* line 282, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+  /* line 281, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
   .row .user-link {
     width: 46%;
     min-width: 250px;
     margin: 10px 1.6%;
   }
 }
-/* line 295, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 294, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #nested_links {
   margin: 0 auto;
 }
 
 /* Show.html.erb */
-/* line 301, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 300, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #graph-section {
   padding: 2em 0;
   max-width: 1020px;
@@ -2867,22 +2863,22 @@ h1, h2 {
   text-align: center;
   color: #616161;
 }
-/* line 308, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 307, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #graph-section h1 {
   font-family: "Lilita One", cursive;
   font-size: 2em;
 }
-/* line 312, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 311, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #graph-section h2 {
   padding-top: 0.5em;
   font-size: 1.3em;
 }
-/* line 317, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 316, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #graph-section #show-details {
   width: 400px;
   margin: 0 auto;
 }
-/* line 318, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 317, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 #graph-section .goal-achieved {
   position: absolute;
   z-index: 1000;
@@ -2895,19 +2891,19 @@ h1, h2 {
   background-size: cover;
 }
 
-/* line 331, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 330, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .graphs {
   margin-top: 40px;
 }
 
-/* line 334, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 333, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .graph {
   border: solid 2px #616161;
   border-radius: 10px;
   padding: 10px;
 }
 
-/* line 335, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
+/* line 334, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/links.scss */
 .no-border {
   border: none;
 }

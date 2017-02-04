@@ -3,8 +3,6 @@ class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :cancel_sub]
 
 	def show
-		@subs = nil
-		@canceledsubs = nil
 		@links = @user.links.order(expires: :desc)
 		@activelinks = @links.active.order(expires: :desc)
 		if @user.stripeid 

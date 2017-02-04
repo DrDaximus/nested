@@ -3,11 +3,13 @@ class UsersController < ApplicationController
 	before_action :find_user, only: [:show, :cancel_sub]
 
 	def show
-		customer = Stripe::Customer.retrieve(@user.stripeid)
-		@subs = Stripe::Subscription.list(:customer => customer)
-		@canceledsubs = Stripe::Subscription.list(:customer => customer, :status => "canceled")
-		@links = @user.links.order(expires: :desc)
-		@activelinks = @links.active.order(expires: :desc)
+		if @user.stripid 
+			customer = Stripe::Customer.retrieve(@user.stripeid)
+			@subs = Stripe::Subscription.list(:customer => customer)
+			@canceledsubs = Stripe::Subscription.list(:customer => customer, :status => "canceled")
+			@links = @user.links.order(expires: :desc)
+			@activelinks = @links.active.order(expires: :desc)
+		end
 	end
 
 	def cancel_sub

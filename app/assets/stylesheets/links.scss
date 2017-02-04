@@ -9,7 +9,7 @@
 }
 
 #instruction-1 { position: absolute; margin-left: 510px; margin-top: -20px;}
-
+#link-choice-modal { z-index: 10000}
 .modal-content { overflow: hidden;}
 .modal-header {background: $lightgrey; color: white; text-align: center;}
 #options-wrapper { 

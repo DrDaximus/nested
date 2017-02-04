@@ -127,13 +127,10 @@ h1, h2{
 }
 
 #no-links {
-	text-align: center;
+	background-image: url(/assets/new-link.png);
 	position: absolute;
 	bottom: 65px;
 	margin-left: 80px;
-	font-size: 1.2em;
-	font-family: $primary-font;
-	color: $lightgrey;
 }
 
 .link-item {

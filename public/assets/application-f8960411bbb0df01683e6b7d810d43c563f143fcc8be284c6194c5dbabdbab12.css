@@ -2910,43 +2910,41 @@ h1, h2 {
 body {
   background-color: #fff;
   color: #333;
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-/* line 9, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 8, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
 }
 
-/* line 15, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 13, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 pre {
   background-color: #eee;
   padding: 10px;
   font-size: 11px;
 }
 
-/* line 22, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 20, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 div.field, div.actions {
   margin-bottom: 10px;
 }
 
-/* line 27, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 25, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 #notice {
   color: green;
 }
 
-/* line 31, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 29, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 .field_with_errors {
   padding: 2px;
   background-color: red;
   display: table;
 }
 
-/* line 37, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 35, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 #error_explanation {
   width: 450px;
   border: 2px solid red;
@@ -2955,7 +2953,7 @@ div.field, div.actions {
   margin-bottom: 20px;
   background-color: #f0f0f0;
 }
-/* line 45, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 43, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 #error_explanation h2 {
   text-align: left;
   font-weight: bold;
@@ -2966,7 +2964,7 @@ div.field, div.actions {
   background-color: #c00;
   color: #fff;
 }
-/* line 56, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
+/* line 54, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/scaffolds.scss */
 #error_explanation ul li {
   font-size: 12px;
   list-style: square;
@@ -3027,7 +3025,7 @@ n {
 /* line 15, /Users/carlgoulding/Dropbox/nested_app/Nested/app/assets/stylesheets/welcome.scss */
 .fetch-bg {
   margin-top: -65px;
-  font-family: 'Lilita One', cursive;
+  font-family: "Lilita One", cursive;
   width: 100vw;
   height: 100%;
   background: #fff;

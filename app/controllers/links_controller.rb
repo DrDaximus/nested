@@ -44,11 +44,14 @@ class LinksController < ApplicationController
     respond_to do |format|
       @coupon = @link.coupon if @link.coupon.present?
       @token = params[:stripeToken]
-      unless current_user.stripeid
-        Stripe::Customer.create(
+      unless current_user.subscribed?
+        customer = Stripe::Customer.create(
           :description => "Customer name " + current_user.name + " " + current_user.lastname,
           :email => current_user.email
         )
+        current_user.stripid = customer.id
+        current_user.subscribed = true
+        current_user.save
       end
       if @link.save_with_payment(current_user, @token, @coupon)
         # Confirm assigned code.

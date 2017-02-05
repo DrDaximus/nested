@@ -49,7 +49,7 @@ class LinksController < ApplicationController
           :description => "Customer name " + current_user.name + " " + current_user.lastname,
           :email => current_user.email
         )
-        current_user.stripid = customer.id
+        current_user.stripeid = customer.id
         current_user.subscribed = true
         current_user.save
       end

@@ -15,7 +15,7 @@ n {font-family: 'Arial Black', cursive;}
 .fetch-bg {
 	margin-top: -65px;
 	font-family: $primary-font;
-	width: 100vw;
+	width: 100%;
 	height: 100%;
 	background: $white;
 }
@@ -124,24 +124,24 @@ n {font-family: 'Arial Black', cursive;}
 	height:300px;
 }
 #landing-tokens-bg { 
+	height: 350px;
 	position: absolute; 
 	width: 100%; 
 	left: 0; 
 	background: $main;
 	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);}
 .cross-arrow { position: absolute; top: -20px; left: 250px;}
-#landing-token-spacer { height: 340px;}
 #landing-tokens { 
 	margin: 0 auto;
-	width: 900px;
+	max-width: 900px;
 	text-align: center;
 	padding-top: 35px;
-	height: 340px;
 	
 }
-#blackboard { margin-top: 40px;}
-.landing-content {width: 900px; margin: 0 auto; }
-.landing-detail { margin-top: 100px;}
+#detail-wrapper	{ padding-top: 380px;}
+#blackboard { margin-top: 0px;}
+.landing-content {max-width: 900px; margin: 0 auto; }
+.landing-detail { margin-top: 0px;}
 #landing-bottom-margin { height: 100px;}
 
 @media only screen and (max-width: 1100px) {
@@ -213,5 +213,14 @@ n {font-family: 'Arial Black', cursive;}
 	.mylinks {
 		a{ font-size: 1.1em; }
 	}
+	#landing-tokens-bg { 
+		height: 900px;
+	}
+	#detail-wrapper	{ padding-top: 980px;}
+	.detail-img {width: 350px; padding: 10px 0;}
+	.landing-detail { padding: 0 15px;}
+	.landing-token { padding: 10px 0;}
 }
+
+
 

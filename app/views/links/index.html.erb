@@ -4,7 +4,7 @@
 
 <div id="link-index-img"></div>
   <div id="nest-title"><%= current_user.name %>'s Nest</div>
-
+  
     <section id="nested_links">
       <% if @links.present? %>
         <div id="instruction-1" class="<%= 'hide' unless instruct == true %>"><%= image_tag("instruction-1.png", :alt => "arrow")%></div>

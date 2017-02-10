@@ -13,7 +13,7 @@ Active: <%= @user.links.active.count %><br>
 Expired: <%= @user.links.count - @user.links.active.count %><br><br>
 
 Subsciptions<br><br>
-
+<div class="table-responsive">
 <table class="table">
 	<tr>
 		<th><b>Code</b></th>
@@ -53,6 +53,7 @@ Subsciptions<br><br>
 		<% end %>
 	<% end %>
 </table>
+</div>
 
 <%= link_to "Edit My Details", edit_user_registration_path %>
 

@@ -2,7 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+@import "variables";
+
 #sign-up-title { margin-bottom: 14px; }
+#sub-cancel { 
+	a { 
+		color: $main; 
+		&:hover { 
+			color: $secondary; 
+		}
+	}
+}
 
 #subs-table {
 	max-width: 650px;

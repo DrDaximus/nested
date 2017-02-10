@@ -34,7 +34,7 @@ Subsciptions<br><br>
 			<td><%= stripe_to_cur(link.plan.amount) %></td>
 			<td><%= link.plan.interval %></td>
 			<td><%= link.discount ? link.discount.coupon.percent_off.to_s + "% " + link.discount.coupon.duration : "-" %></td>
-			<td><%= link_to "Cancel", cancel_sub_user_path(@user, link.id), method: :patch, data: { confirm: "Are you sure you wish to end your subscription to @#{link.metadata.code}?", title: "Cancel Subscription", verify: "#{link.metadata.code}", verify_text: "Enter #{link.metadata.code} below to confirm that you wish to end your subscription. You will no longer be able to use this code beyond #{Time.at(link.current_period_end).strftime("%H:%M on %d %b %Y")}. This action is non-reversable and you will not be charged any future payments for this link!", commit: "End Me", cancel: "Keep Me" } %></td>
+			<td id="sub-cancel"><%= link_to "Cancel", cancel_sub_user_path(@user, link.id), method: :patch, data: { confirm: "Are you sure you wish to end your subscription to @#{link.metadata.code}?", title: "Cancel Subscription", verify: "#{link.metadata.code}", verify_text: "Enter #{link.metadata.code} below to confirm that you wish to end your subscription. You will no longer be able to use this code beyond #{Time.at(link.current_period_end).strftime("%H:%M on %d %b %Y")}. This action is non-reversable and you will not be charged any future payments for this link!", commit: "End Me", cancel: "Keep Me" } %></td>
 		</tr>
 		<% end %>
 	<% end %>

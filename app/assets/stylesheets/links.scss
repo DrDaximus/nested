@@ -227,7 +227,7 @@ h1, h2{
 	height: 40px;
 }
 .target {
-	height: 40px;
+	height: 20px;
 }
 #zeros { position: absolute; color: $superlight; font-size: 3.5em;}
 #visits {
@@ -275,25 +275,6 @@ h1, h2{
 	padding: 0;
 }
 .target-bar { background: $appgreen; height: 40px;}
-
-@media only screen and (max-width: 975px) {
-	.row {
-		.user-link {
-			width: 46%;
-			min-width: 250px;
-			margin: 10px 1.6%;
-		}
-	}
-}
-
-@media only screen and (max-width: 700px) {}
-	
-
-@media only screen and (max-width: 575px) {}
-
-	#nested_links	{
-		margin: 0 auto;
-	}
 	
 /* Show.html.erb */
 
@@ -332,5 +313,52 @@ h1, h2{
 }
 .graph {border: solid 2px $secondary; border-radius: 10px; padding: 10px;}
 .no-border { border:none;}
+
+
+
+@media only screen and (max-width: 975px) {
+	.row {
+		.user-link {
+			width: 46%;
+			min-width: 250px;
+			margin: 10px 1.6%;
+		}
+	}
+}
+
+@media only screen and (max-width: 900px) {
+	#instruction-1 { 
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 770px) {
+	.link-details { 
+		height: 360px;
+	}
+	.link-form-wrapper {
+		width: 90%;
+	}
+}
+
+@media only screen and (max-width: 575px) {}
+
+
+@media only screen and (max-width: 525px) {
+	#nested_links { 
+		width: 90%;
+	}
+	.star {
+		display: none;
+	}
+	.field {
+		font-size: 11px;
+		#link_link { padding-left: 75px;}
+		#url-placeholder { margin: 12px 0 0 15px ;}
+		.form-control {
+			font-size: 11px;
+		}
+	}
+}
 
 

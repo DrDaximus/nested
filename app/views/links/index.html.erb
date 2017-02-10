@@ -22,14 +22,14 @@
             <div class="col-xs-8 link-title">
               <%= link.title %>
             </div>
-            <div class="col-xs-3 link-code">
+            <div class="col-sm-3 link-code">
               @<%= link.code %>
               <% if link.expired == true %>
-                <i class="fa fa-star-o" title="Link Expired"></i>
+                <i class="star fa fa-star-o" title="Link Expired"></i>
               <% elsif link.subscriptionid == nil && link.expired == false || link.subscribe_opt == 0%>
-                <i class="fa fa-star-half-o" title="Link Expiring OR Subscription Ended"></i>
+                <i class="star fa fa-star-half-o" title="Link Expiring OR Subscription Ended"></i>
               <% else %>
-                <i class="fa fa-star" title="Subscription Current"></i>
+                <i class="star fa fa-star" title="Subscription Current"></i>
               <% end %>
             </div>
           </div>

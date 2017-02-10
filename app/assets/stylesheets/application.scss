@@ -184,6 +184,61 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 }
 }
 
+@media only screen and (max-height: 700px) {
+	.form-frame { margin-top: 0em; }
+}
+
+@media only screen and (max-width: 768px) {
+	.form-frame {  margin-left: 20%; width: 60%; }
+}
+
+@media only screen and (max-width:575px) {
+
+	#top_header {
+		#main_nav { 
+			font-size: 0.8em;
+			padding-top: 1em;
+		}
+		.logo {
+			padding-top: 0.2em;
+			font-size: 1.5em;
+		}
+	}
+	.form-frame { margin-left: 5%; width: 90%; }
+	.link-item { font-size: 0.8em; padding-top: 1.6em;}
+	.link-title {
+		padding-right: 0;
+		padding-left: 20px;
+		width: 60%;
+	}
+}
+
+@media only screen and (max-width: 451px) {
+	.form-frame { margin-left: 5%; width: 90%; }
+	.page-links {
+		font-size: 1em;
+		padding-top: 1.5em;
+	}
+}
+
+@media only screen and (max-width: 330px) {
+	#zeros, #visits {
+		padding-top: 5px;
+		font-size: 2.8em;
+	}
+}
+
+@media only screen and (max-width: 330px) {
+	#top_header {
+		#main_nav { 
+			font-size: 0.6em;
+			padding-top: 1.4em;
+		}
+	}
+}
+
+
+
 
 
 

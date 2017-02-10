@@ -1,9 +1,9 @@
 <div class="row row-detail">
-  <div class="col-md-8 detail-container large-detail">
+  <div class="col-sm-8 detail-container large-detail">
     <div id="zeros">00000000 </div><div class="title">Visits</div> 
     <div id="visits"><%= link_count(link) %></div>
   </div>
-  <div class="col-md-4 detail-container large-detail">
+  <div class="col-sm-4 detail-container large-detail">
     <div class="title">Created</div> 
     <div class="title date">
       <%= link.created_at.strftime("%b %d %Y") %> 
@@ -12,10 +12,10 @@
   </div>
 </div>
 <div class="row row-detail">
-  <div class="col-md-8 detail-container large-detail">
+  <div class="col-sm-8 detail-container large-detail">
     <div class="row" id="menu">
-      <div class="col-md-1"></div>
-      <div class="col-md-2 menu-item" id="menu-1">
+      <div class="col-xs-1"></div>
+      <div class="col-xs-2 menu-item" id="menu-1">
         <div class="icon">
           <i class="fa fa-power-off fa-lg" title="Switch On/Off"></i>
         </div>
@@ -23,7 +23,7 @@
           Active
         </div>
       </div>
-      <div class="col-md-2 menu-item" id="menu-2">
+      <div class="col-xs-2 menu-item" id="menu-2">
         <div class="icon smile-<%=link_status(link)%>">
           <i class="fa fa-<%= smiley(link_status(link)) %>-o fa-lg" title="<%=link_status(link).upcase%>"></i>
         </div>
@@ -31,7 +31,7 @@
           Status
         </div>
       </div>
-      <div class="col-md-2 menu-item" id="menu-3">
+      <div class="col-xs-2 menu-item" id="menu-3">
         <%= link_to link do %>
           <div class="icon">
             <i class="fa fa-line-chart fa-lg" title="Link Statistics"></i>
@@ -41,7 +41,7 @@
           </div>
         <% end %>
       </div>
-      <div class="col-md-2 menu-item" id="menu-4">
+      <div class="col-xs-2 menu-item" id="menu-4">
         <%= link_to_unless link.expired, edit_link_path(link) do %> 
           <div class="icon">
             <i class="fa fa-cog fa-lg" title="Edit link"></i>
@@ -51,7 +51,7 @@
           </div>
         <% end %>
       </div>
-      <div class="col-md-2 menu-item" id="menu-5">
+      <div class="col-xs-2 menu-item" id="menu-5">
         <%= link_to link, method: :delete, data: { confirm: "This link is active, are you sure you wish to permanently delete it?", title: "Delete Active Link", verify: "delete", verify_text: "Type 'delete' below to confirm that you wish to permanently remove this link, end any associated subscription, and loose all associated data. You will no longer be able to use this link, effective immediately. This action is non-reversable. You will not be charged any future payments for this link!", commit: "Delete Me", cancel: "Keep Me" } do %>
         <div class="icon">
           <i class="fa fa-trash fa-lg" title="Delete link"></i>
@@ -61,25 +61,25 @@
         </div>
         <% end %>
       </div>
-      <div class="col-md-1"></div>
+      <div class="col-xs-1"></div>
     </div>
   </div>
-  <div class="col-md-4 detail-container large-detail">
+  <div class="col-sm-4 detail-container large-detail">
     <div class="title">Expires</div> 
     <div class="title date"><%=link_expiry(link)%></div> 
   </div>
 </div>
 <div class="row row-detail">
-  <div class="col-md-12 detail-container mid-detail">
+  <div class="col-sm-12 detail-container mid-detail">
     <div class="row" id="target-top">
-      <div class="col-md-4 target" id="target-start">0</div>
-      <div class="col-md-4" id="target-title">Target</div>
-      <div class="col-md-4 target" id="target-end"><%= link.goal %></div>
+      <div class="col-xs-4 target" id="target-start">0</div>
+      <div class="col-xs-4" id="target-title">Target</div>
+      <div class="col-xs-4 target" id="target-end"><%= link.goal %></div>
     </div>
   </div>
 </div>
 <div class="row row-detail">
-  <div class="col-md-12 detail-container" id="target-bottom">
+  <div class="col-sm-12 detail-container" id="target-bottom">
     <div class="target-bar" style="width: <%= bar_width(link_count(link), link.goal)%>%"></div>
   </div>
 </div>

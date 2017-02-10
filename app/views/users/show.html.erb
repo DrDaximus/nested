@@ -1,6 +1,6 @@
 <div class="content-wrapper" id="subs-wrapper">
 
-<h2>User Account</h2>
+<h2><b>User Account</b></h2>
 Created: <%= @user.created_at.strftime("%d %b %Y at %H:%M")%><br><br>
 
 Email: <%= @user.email %><br><br>
@@ -8,13 +8,11 @@ Email: <%= @user.email %><br><br>
 First Name: <%= @user.name%><br>
 Last Name: <%= @user.lastname%><br><br>
 
-Link Count: <%= @user.links.count%><br>
-Active: <%= @user.links.active.count %><br>
-Expired: <%= @user.links.count - @user.links.active.count %><br><br>
+Link Count: <%= @user.links.count%> | Active: <%= @user.links.active.count %> | Expired: <%= @user.links.count - @user.links.active.count %><br><br>
 
-Subsciptions<br><br>
+<h3><b>Subscriptions<b></h3><br>
 <div class="table-responsive">
-<table class="table" id="subs-table">
+<table class="table table-condensed" id="subs-table">
 	<tr>
 		<th><b>Code</b></th>
 		<th><b>Plan</b></th>
@@ -24,24 +22,26 @@ Subsciptions<br><br>
 		<th><b>Discount</b></th>
 		<th><b>Action</b></th>
 	</tr>
-	<tr><th colspan="7">Active</th></tr>
-	<% if @subs %>
-		<% @subs.each do |link| %>
-		<tr>
-			<td><%= link.metadata.code %></td>
-			<td><%= link.plan.id %></td>
-			<td><%= link.status %></td>
-			<td><%= stripe_to_cur(link.plan.amount) %></td>
-			<td><%= link.plan.interval %></td>
-			<td><%= link.discount ? link.discount.coupon.percent_off.to_s + "% " + link.discount.coupon.duration : "-" %></td>
-			<td id="sub-cancel"><%= link_to "Cancel", cancel_sub_user_path(@user, link.id), method: :patch, data: { confirm: "Are you sure you wish to end your subscription to @#{link.metadata.code}?", title: "Cancel Subscription", verify: "#{link.metadata.code}", verify_text: "Enter #{link.metadata.code} below to confirm that you wish to end your subscription. You will no longer be able to use this code beyond #{Time.at(link.current_period_end).strftime("%H:%M on %d %b %Y")}. This action is non-reversable and you will not be charged any future payments for this link!", commit: "End Me", cancel: "Keep Me" } %></td>
+	<% if @unpaidsubs.present? %>
+		<tr><th colspan="7"><b>Suspended</b></th></tr>
+		<% @unpaidsubs.each do |link| %>
+		<tr class="danger">
+			<%= render "table_rows", link: link %>
 		</tr>
 		<% end %>
 	<% end %>
-	<tr><th colspan="7">Canceled</th></tr>
-	<% if @canceledsubs %>
+	<tr><th colspan="7"><b>Active</b></th></tr>
+	<% if @subs %>
+		<% @subs.each do |link| %>
+		<tr class="success">
+			<%= render "table_rows", link: link %>
+		</tr>
+		<% end %>
+	<% end %>
+	<% if @canceledsubs.present? %>
+		<tr><th colspan="7"><b>Canceled</b></th></tr>
 		<% @canceledsubs.each do |link| %>
-		<tr>
+		<tr class="active">
 			<td><%= link.metadata.code %></td>
 			<td><%= link.plan.id %></td>
 			<td><%= link.status %></td>

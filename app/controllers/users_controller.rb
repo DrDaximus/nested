@@ -9,6 +9,7 @@ class UsersController < ApplicationController
 			customer = Stripe::Customer.retrieve(@user.stripeid)
 			@subs = Stripe::Subscription.list(:customer => customer)
 			@canceledsubs = Stripe::Subscription.list(:customer => customer, :status => "canceled")
+			@unpaidsubs = Stripe::Subscription.list(:customer => customer, :status => "unpaid")
 		end
 	end
 

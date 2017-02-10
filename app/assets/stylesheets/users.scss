@@ -4,3 +4,12 @@
 
 #sign-up-title { margin-bottom: 14px; }
 
+#subs-table {
+	max-width: 650px;
+}
+
+@media only screen and (max-width: 768px) {
+	#subs-wrapper {
+		width: 90%;
+	}
+}

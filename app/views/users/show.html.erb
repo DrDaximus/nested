@@ -1,4 +1,4 @@
-<div class="content-wrapper">
+<div class="content-wrapper" id="subs-wrapper">
 
 <h2>User Account</h2>
 Created: <%= @user.created_at.strftime("%d %b %Y at %H:%M")%><br><br>
@@ -14,7 +14,7 @@ Expired: <%= @user.links.count - @user.links.active.count %><br><br>
 
 Subsciptions<br><br>
 <div class="table-responsive">
-<table class="table">
+<table class="table" id="subs-table">
 	<tr>
 		<th><b>Code</b></th>
 		<th><b>Plan</b></th>

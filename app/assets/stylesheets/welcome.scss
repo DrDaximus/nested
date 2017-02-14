@@ -139,9 +139,10 @@ n {font-family: 'Arial Black', cursive;}
 	
 }
 #detail-wrapper	{ padding-top: 380px;}
-#blackboard { margin-top: 0px;}
+#blackboard { margin-top: 20px;}
+#bus { margin-top: 50px;}
 .landing-content {max-width: 900px; margin: 0 auto; }
-.landing-detail { margin-top: 0px;}
+.landing-detail { margin-top: 50px;}
 #landing-bottom-margin { height: 100px;}
 
 @media only screen and (max-width: 1100px) {
@@ -179,7 +180,7 @@ n {font-family: 'Arial Black', cursive;}
 	
 }
 
-@media only screen and (max-width:575px) {
+@media only screen and (max-width:875px) {
 
 	.fetch-wrapper {
 	padding-top: 15%;
@@ -218,7 +219,7 @@ n {font-family: 'Arial Black', cursive;}
 	}
 	#detail-wrapper	{ padding-top: 960px;}
 	.detail-img {width: 350px; padding: 15px 0;}
-	.landing-detail { padding: 15px 15px;}
+	.landing-detail { padding: 0px 15px;}
 	.landing-token { padding: 10px 0;}
 	#dot-line	{ left: 46px; top: 198px;}
 	#own-img {display: none; margin-left: 30px;}

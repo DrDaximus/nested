@@ -135,46 +135,47 @@ h1, h2{
 	color: $lightgrey;
 }
 
+// LINK ITEMS
+
 .link-item {
+	opacity: 0.8;
 	margin-top: 4px;
 	width: 100%;
 	height: 44px;
-	border-radius: 25px;
-	padding: 13px;
+	padding-top: 15px;
 	color: white;
 	background: $linkItems;
-	font-size: 1.2em;
-	font-weight: bold;
+	font-size: 1.1em;
+	font-weight: 400;
 	cursor: pointer;	
+	border-radius: 5px;
+	&:hover { opacity: 0.7;};
 	.link-icon {
-		a {color: $main; &:hover {color: $secondary;}}
-		.circle { 
-			position:absolute;
-			text-align: center;
-			padding-top: 6px;
-			padding-left: 1px;
-			font-size: 0.9em;
-			margin-top: -32px;
-			margin-left: -14px;
-			background: white;
-			height: 46px;
-			width: 46px;
-			border-radius: 50%;
-			.tag-img {margin: -6px 0 0 -1px;}
-		}
+		padding-left: 28px;
+		margin: -2px 0 0 -3px;
+		font-size: 1.2em; 
+		a { color: $white; &:hover {color: $main;}}
 	}
 	.link-title {}
-	.link-code { text-align: right;}
+	.link-code { text-align: right; padding-right: 20px;}
 	.expand-link { position: absolute; margin-left: 500px; margin-top: -17px; color: $secondary; cursor: pointer;}
 	}
+
+	// subscription colors
+
+	.sub-0 { background: $basic;} //basic}
+	.sub-1 { background: $silver;} //Silver
+	.sub-2 { background: $bronze;} //Bronze
+	.sub-3 { background: $gold;} //Gold
+
+	// status colors
 
 	.active {}
 	.ending {.link-code {color: orange;}}
 	.expired {
-		background: $expired-fill;
+		background: $expired-fill !important; 
 		border-color: $lightgrey !important;
-		.circle {color: $lightgrey;
-	}
+		&:hover { background: $main !important;};
 	.expired-btn {
 		border-color: $lightgrey !important;
 		a {color: $lightgrey;}

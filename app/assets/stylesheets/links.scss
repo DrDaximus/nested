@@ -10,7 +10,8 @@
 
 #instruction-1 { position: absolute; margin-left: 510px; margin-top: -20px;}
 .modal-content { overflow: hidden;}
-.modal-header {background: $lightgrey; color: white; text-align: center; font-family: $primary-font;}
+.modal-header {background: $lightgrey; color: white; text-align: center; }
+
 #options-wrapper { 
 	font-family: $primary_font;
 	a {color: $secondary;}
@@ -23,7 +24,7 @@
 		.option { 
 			.img-tag { position: relative; top: -22px;}
 			height: 120px;
-			border-radius: 20px;
+			border-radius: 5px;
 			border: solid 1px $lightgrey;
 			background: $white;
 			box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);
@@ -35,6 +36,7 @@
 	}
 	.conditions { text-align: center; font-size: 0.8em;}
 }
+
 .terms{ text-align: center; color: $secondary; font-size: 0.8em}
 
 .link-form-wrapper { 
@@ -53,10 +55,10 @@
 	#link_link { padding-left: 90px;}
 	#url-placeholder { position: absolute; margin: 10px 0 0 15px;}
 	#url-instruction {text-align: center; margin-top: 3px;}
-	.basic {background: $basic;}
-	.silver {background: $silver;}
-	.bronze {background: $bronze;}
-	.gold {background: $gold;}
+	//basic {background: $main;}
+	//silver {background: $silver;}
+	//bronze {background: $bronze;}
+	//gold {background: $gold;}
 
 	.stripe-button-el { display: none}
 
@@ -64,16 +66,18 @@
 		width: 100%;
 		z-index:3000;
 		position: absolute;  
-		top: 9px;
+		top: 17px;
 		left: 0;
 	}
 	.new-link-form-title { 
-		color: white;
 		text-align: center; 
 		margin-top: 5px; 
 		margin-bottom: 15px; 
 		font-weight: bold; 
 		font-size: 2em;
+	}
+	#new-code {
+		color: $secondary;
 	}
 }
 #stripe-logo { text-align: center}
@@ -154,7 +158,7 @@ h1, h2{
 		padding-left: 28px;
 		margin: -2px 0 0 -3px;
 		font-size: 1.2em; 
-		a { color: $white; &:hover {color: $main;}}
+		a { color: $white; &:hover {opacity: 1;}}
 	}
 	.link-title {}
 	.link-code { text-align: right; padding-right: 20px;}
@@ -163,7 +167,7 @@ h1, h2{
 
 	// subscription colors
 
-	.sub-0 { background: $basic;} //basic}
+	.sub-0 { background: $main;} //basic}
 	.sub-1 { background: $silver;} //Silver
 	.sub-2 { background: $bronze;} //Bronze
 	.sub-3 { background: $gold;} //Gold
@@ -175,7 +179,10 @@ h1, h2{
 	.expired {
 		background: $expired-fill !important; 
 		border-color: $lightgrey !important;
-		&:hover { background: $main !important;};
+		&:hover { 
+			background: $appred !important;
+			a { &:hover {color: red;}}
+		};
 	.expired-btn {
 		border-color: $lightgrey !important;
 		a {color: $lightgrey;}
@@ -252,7 +259,7 @@ h1, h2{
 		}
 		.smile-active { color: $appgreen;}
 		.smile-ending { color: orange;}
-		.smile-expired { color: $main;}
+		.smile-expired { color: $appred;}
 		.smile-status { color: $lightgrey;}
 		.menu-text {
 			font-size: 0.8em;
@@ -277,7 +284,7 @@ h1, h2{
 }
 .target-bar { background: $appgreen; height: 40px;}
 	
-/* Show.html.erb */
+// Show
 
 #graph-section {
 	padding: 2em 0;

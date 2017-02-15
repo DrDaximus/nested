@@ -50,6 +50,11 @@ a {color: black; a:active,a:link,a:focus {outline: 0px none; text-decoration: no
 
 /* start of my css */
 
+logo {
+	font-family: $fancy-font;
+	font-size: 130%;
+}
+
 h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 
 #yield_wrapper {
@@ -105,21 +110,17 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 	z-index: 2000;
 	.main-logo { text-align: center; margin-top: -5px;}
 	.logo {
+		font-family: $fancy-font;
 		small { color: $main;}
 		color: $secondary;
 		float: left;
-		font-size: 1.9em;
-		n {
-			font-size: 0.5em;
-			color: $lightgrey;
-		}
+		font-size: 2.2em;
 	}
 	#main_nav {
-
 		color: $secondary;
 		float: right;
-		font-size: 1.2em;
-		padding-top: 0.4em;
+		font-size: 0.9em;
+		padding-top: 0.6em;
 		a {
 			color: $secondary;
 			&:hover {
@@ -136,16 +137,16 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 	bottom: 0;
 	margin-top: 10px;
 	font-family: $primary_font;
-	font-size: 1.2em;
+	font-size: 1em;
 	text-align: center;
-	color: $main;
+	color: $secondary;
 	height: 55px;
 	background: white;
-	padding-top: 0.9em;
+	padding-top: 1.2em;
 	a {
-		color: $main;
+		color: $secondary;
 		&:hover {
-			color: $secondary;
+			color: $main;
 		}
 	i {}
 	}
@@ -158,19 +159,17 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 	padding-top: 2em; 
 	padding-bottom: 2em; 
 	background: $white; 
-	margin-top: 8em; 
-	border-radius: 10px;
+	margin-top: 6em; 
+	border-radius: 5px;
 	color: $secondary;
 	.sign-in-btn {
-		font-family: $primary_font;
-		border-radius: 20px;
+		border-radius: 4px;
 		margin-top: 20px;
 		width: 30%;
 	}
 	
 	.form-links {
 	width: 100%;
-	font-family: $primary_font;
 	font-size: 1em;
 	text-align: center;
 	color: $secondary;

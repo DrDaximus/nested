@@ -6,6 +6,6 @@ class User < ActiveRecord::Base
 
   has_many :links    
 
-  validates :name, :lastname, :market, presence: true 
+  validates :name, :lastname, :market, presence: true
 
 end

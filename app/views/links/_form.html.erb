@@ -21,11 +21,13 @@
       <div class="token-tag">
         <%= image_tag("sub-tag-#{@link.subscribe_opt}.png", :alt => "Token-Tag", size: "80") %>
       </div> 
-      <% if current_page?(controller: 'links', action: 'new') %>
-        @<%= @code.code %>
-      <% else %>
-        @<%= @link.code %>
-      <% end %>
+      <div id="new-code">
+        <% if current_page?(controller: 'links', action: 'new') %>
+          @<span><%= @code.code %></span>
+        <% else %>
+          @<span><%= @link.code %></span>
+        <% end %>
+      </div>
     </div>
 
     <h2 id="link-details-title"><%= subscription(@link.subscribe_opt) %> Details</h2>

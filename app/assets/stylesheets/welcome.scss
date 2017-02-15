@@ -4,20 +4,26 @@
 
 @import "variables";
 
-n {font-family: 'Arial Black', cursive;}
 
-#welcome-logo	{ top: 50px; position: absolute;}
-#dot-line	{ left: 150px; top: 350px; position: absolute;}
-#arrow-img {position:absolute; margin-left: 450px; margin-top: -120px;}
-#own-img {position:fixed; width:100%; margin-top: -95px;}
-#scroll{position:absolute; left: 50px; bottom: 65px;}
+// Welcome page
+
+#clouds	{ 
+	height: 400px; 
+	z-index: -3000;
+	top: 100px; 
+	left: 0;
+	position: absolute; 
+	width: 100%; 
+	background-image: url(/assets/clouds.png);
+	background-repeat: no-repeat;
+}
+#arrow-img {position:absolute; margin-left: 360px; margin-top: -95px;}
 
 .fetch-bg {
-	margin-top: -65px;
+	margin-top: -35px;
 	font-family: $primary-font;
 	width: 100%;
 	height: 100%;
-	background: $white;
 }
 
 .fetch-wrapper {
@@ -28,127 +34,125 @@ n {font-family: 'Arial Black', cursive;}
 }
 
 #logo {
-		letter-spacing: -4px;
+		font-family: $fancy-font;
 		color: $main;
 		font-size: 8em;
-		font-weight: 700;
-		n {font-size: 0.4em; }
+		font-weight: 100;
 	}
 
 #title {
-	color: $secondary;
-	font-size: 4em;
-	padding: 10px 0 5% 0;
+	color: $lightgrey;
+	font-size: 3em;
+	padding: 0 0 5% 0;
+	font-weight: 700;
+	letter-spacing: -0.81px;
+	margin-top: -10px;
 }
 
-.nest-count{
-	font-size: 1.5em;
-	color: $white;
-	margin-top: 5rem;
-}
-
-#search {
-	color:$lightgrey;
-}
+// fetch form
 
 .input-group {
 	font-family: $primary-font;
-	width: 60%;
+	width: 35%;
 	max-width: 500px;
 	margin: 0 auto;
-	padding-top: 10px;
-	
+	padding-top: 20px;
 	.code-input, .input-group-addon {
 		font-family: $primary-font;
 		text-align: center;
-		height: 65px;
-		font-size: 2.8em;
-		border-radius: 10px;
-		color: red;
+		height: 55px;
+		font-size: 2.4em;
+		border-radius: 0 3px 3px 0 !important;
 	}
 	.input-group-addon {
-			width: 65px;
-			font-size: 3em;
-			border-radius: 10px;
-			color: $secondary;
+			width: 55px;
+			font-size: 2.8em;
+			border-radius: 3px 0 0 3px !important;
+			color: white;
 		}
 	}
 
 	.submit-code-btn {
 		font-family: $primary-font;
-		width: 45%;
-		max-width: 300px;
-		
+		font-weight: 900;
+		letter-spacing: -0.81px;
+		width: 35%;
+		max-width: 500px;
 		background: $welcomeButton;
-		margin-top: 15px;
+		margin-top: 0px;
 		border: 2px solid $welcomeButton;
-		height: 60px;
-		border-radius: 30px;
+		height: 55px;
+		border-radius: 3px;
 		transition: all .4s ease-in-out;
 		cursor: pointer;
 		color: $white;
-		font-size: 2.5em;
+		font-size: 2.4em;
 		&:hover {
-			border: 2px solid $white;
+			border: 2px solid $white; opacity: 0.9; font-size: 2.3em;
 		}	
 	}
 	
-	.mylinks {
-		margin-top: 1em;
-		color: $main;
-		background: white;
-		a {
-		color: $secondary;
-		font-size: 1.2em;
-		transition: all .2s ease-in-out;
-		}
-		a:hover { 
-			color: $secondary;
-	 	}
-	}
-
+// Landing section
 #landing-wrapper {
-	color: #535353;
-	font-family: Noteworthy;
-	line-height: 30px;
 	position: absolute;
-	top: 100%;
+	top: 75%;
 	width: 100%;
 }
-#bus-bg { 
-	margin-top: 50px;
-	position: absolute; 
-	width: 100%; 
-	left: 0; 
-	background: $superlight;
-	height:300px;
-}
-#landing-tokens-bg { 
-	height: 350px;
-	position: absolute; 
-	width: 100%; 
-	left: 0; 
+#landing-color-section { 
+	width: 100%;  
 	background: $main;
-	box-shadow: 0 2px 4px 0 rgba(0,0,0,0.50);}
-.cross-arrow { position: absolute; top: -20px; left: 250px;}
-#landing-tokens { 
-	margin: 0 auto;
-	max-width: 900px;
-	text-align: center;
-	padding-top: 35px;
-	
+	color: white;
+	padding-bottom: 15px;
 }
-#detail-wrapper	{ padding-top: 380px;}
-#blackboard { margin-top: 20px;}
-#bus { margin-top: 50px;}
-.landing-content {max-width: 900px; margin: 0 auto; }
-.landing-detail { margin-top: 50px;}
-#landing-bottom-margin { height: 100px;}
+#landing-color-section-header {
+		padding: 20px;
+		text-align: center;
+		font-size: 1.2em;
+	}
+
+// Email capture
+#landing-user-form{
+	padding: 20px 0 30px 0;
+	#user_email { max-width: 380px; width: 50%; border: none; height: 40px;}
+	.landing-btn-submit { max-width: 240px; width: 25%; height: 41px; background: #7C7C7C; font-size: 0.8em;}
+}
+
+#example-uses {
+	font-size: 1.4em;
+	width: 70%;
+	margin-left: 15%;
+	padding: 50px 0 15px 20px;
+}
+
+#trio-boxes {
+	margin-top: 20px;
+	margin-left: 15%;
+	width: 70%;
+	text-align: center;
+	.box { margin-top: 5px;}
+}
+
+#example-box-wrapper { 
+	padding-bottom: 50px;
+	width: 70%;
+	margin: 0 auto;
+}
+.example-boxes {
+	margin-top: 20px;
+	text-align: left;
+	font-weight: bold;
+	color: $secondary;
+	.example-head {
+		color: $main;
+		font-size: 1.4em;
+		padding: 10px 0;
+	}
+}
 
 @media only screen and (max-width: 1100px) {
 
-	#welcome-logo	{ display: none;}
 	#arrow-img {display: none;}
+	#top_header {background: white !important;}
 }
 
 @media only screen and (max-width: 768px) {
@@ -182,6 +186,21 @@ n {font-family: 'Arial Black', cursive;}
 
 @media only screen and (max-width:875px) {
 
+	// Email capture
+	#landing-user-form{
+		padding: 20px 0 30px 0;
+		#user_email { text-align: center; max-width: 460px; width: 100%; margin: 0 auto; border: none; height: 40px;}
+		.landing-btn-submit { margin-top: 5px; max-width: 460px; width: 100%; height: 41px; background: #7C7C7C; font-size: 0.8em;}
+	} 
+
+	#landing-wrapper {
+		position: absolute;
+		top: 65%;
+		width: 100%;
+	}
+
+	#clouds	{ top: -50px; }
+
 	.fetch-wrapper {
 	padding-top: 15%;
 	}
@@ -204,24 +223,15 @@ n {font-family: 'Arial Black', cursive;}
 			width: 40px;
 		}
 	}
-
 	.submit-code-btn {
+		width: 80%;
 		font-size: 1.5em;
 		height: 40px;
-		margin-top: 0;
 	}
-
 	.mylinks {
 		a{ font-size: 1.1em; }
 	}
 	#landing-tokens-bg { 
 		height: 900px;
 	}
-	#detail-wrapper	{ padding-top: 960px;}
-	.detail-img {width: 350px; padding: 15px 0;}
-	.landing-detail { padding: 0px 15px;}
-	.landing-token { padding: 10px 0;}
-	#dot-line	{ left: 46px; top: 198px;}
-	#own-img {display: none; margin-left: 30px;}
-	.cross-arrow { display: none;}
 }

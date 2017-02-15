@@ -14,10 +14,10 @@
             <div class="col-xs-1 link-icon">
               <% if link.expired? %>
                 <%= link_to link, method: :delete, data: { confirm: "Are you sure you wish to delete this expired link along with all its associated data?", title: "Delete Expired Link", commit: "Delete Me", cancel: "Keep Me" } do %>
-                  <i class="fa fa-times-circle fa-lg" title="Delete link"></i>
+                  <i class="fa fa-times-circle fa-lg" title="Expired <%=subscription(link.subscribe_opt) %> - Delete link"></i>
                 <% end %>
               <% else %>
-                <i class="fa fa-check-circle fa-lg" title="Active"></i>
+                <i class="fa fa-check-circle fa-lg" title="Active <%=subscription(link.subscribe_opt) %>"></i>
               <% end %>
             </div>
             <div class="col-xs-8 link-title">
@@ -28,7 +28,7 @@
               <% if link.expired == true %>
                 <i class="star fa fa-star-o" title="Link Expired"></i>
               <% elsif link.subscriptionid == nil && link.expired == false || link.subscribe_opt == 0%>
-                <i class="star fa fa-star-half-o" title="Link Expiring OR Subscription Ended"></i>
+                <i class="star fa fa-star-half-o" title="Link Expiring OR Subscription Cancelled"></i>
               <% else %>
                 <i class="star fa fa-star" title="Subscription Current"></i>
               <% end %>

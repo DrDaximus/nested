@@ -1,10 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Lilita+One);
 
 /* App Fonts */
-$primary-font: 'Lilita One', cursive;
+$fancy-font: 'SignPainter';
+$primary-font: 'Avenir';
+
 
 /* Main app colors */
-$main: #EC6A6A;
+$main: #36BDFF;
 $secondary: #616161;
 $active: #7FE781;
 $white: #fff;
@@ -23,3 +25,4 @@ $linkItems: rgba(124,124,124,0.8);
 $expired-fill: rgba(111,111,111,0.06);
 $appgreen: #A3E5A4;
 $superlight: #F4F8F6;
+$appred: #EC6A6A;

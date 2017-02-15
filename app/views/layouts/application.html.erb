@@ -12,40 +12,50 @@
 
   <body>
 
-    <% if !current_page?(root_path) %>
-      <header id="top_header" class="clearfix">
-        <div class="wrapper">
-          <div class="row">
-            <div class="col-xs-4">
-              <%= link_to root_path do %>
-                <h1 class="logo">Nested<small>beta</small></h1>
-              <% end %>
-            </div>
-            <div class="col-xs-4">
-              <div class="main-logo"><%= image_tag("main-logo.png", :alt => "Nested Logo", size: "80") %></div> 
-            </div>
-            <div class="col-xs-4">
-              <nav id="main_nav">
-                <% if user_signed_in? %>
-                  <%= link_to links_path, title:  "'s Home" do %>
-                    <i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;
-                  <% end %> 
-                  <%= link_to root_path, title: "Search global codes" do %>
-                    <i class="fa fa-crosshairs fa-lg"></i>&nbsp;&nbsp;
-                  <% end %> 
-                  <%= link_to destroy_user_session_path, title: "Sign out " + current_user.email, :method => :delete do %>
-                    <i class="fa fa-sign-out fa-lg"></i>&nbsp;&nbsp;
-                  <% end %>
-                <% else %>
-                  <%= link_to "sign in", new_user_session_path %> |
-                  <%= link_to "sign up", new_user_registration_path %>
-                <% end %>
-              </nav>
-            </div>
-          </div>
+  <header id="top_header" class="clearfix">
+    <div class="wrapper">
+      <div class="row">
+        <div class="col-xs-4">
+          <%= link_to root_path do %>
+            <h1 class="logo"><%= image_tag("main-logo.png", :alt => "", size: "30") %> nested<small>beta</small></h1>
+          <% end %>
         </div>
-      </header>
-    <% end %>
+        <div class="col-xs-4">
+          <div class="main-logo"><%= image_tag("", :alt => "", size: "80") %></div> 
+        </div>
+        <div class="col-xs-4">
+          <nav id="main_nav">
+            <% if current_page?(root_path) %>
+             <% if user_signed_in? %>
+                <%= link_to links_path do %>
+                  <%= current_user.name %>'s Nest 
+                <% end %> |
+                <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
+              <% else %>
+                <%= link_to "Sign in", new_user_session_path %> |
+                <%= link_to "Create your own nest", new_user_registration_path %>
+              <% end %>
+            <% else %>
+              <% if user_signed_in? %>
+                <%= link_to links_path, title:  "'s Home" do %>
+                  <i class="fa fa-home fa-lg"></i>&nbsp;&nbsp;
+                <% end %> 
+                <%= link_to root_path, title: "Search global codes" do %>
+                  <i class="fa fa-crosshairs fa-lg"></i>&nbsp;&nbsp;
+                <% end %> 
+                <%= link_to destroy_user_session_path, title: "Sign out " + current_user.email, :method => :delete do %>
+                  <i class="fa fa-sign-out fa-lg"></i>&nbsp;&nbsp;
+                <% end %>
+              <% else %>
+                <%= link_to "sign in", new_user_session_path %> |
+                <%= link_to "sign up", new_user_registration_path %>
+              <% end %>
+            <% end %>
+          </nav>
+        </div>
+      </div>
+    </div>
+  </header>
 
     <% if notice %>
       <%  unless current_page?(root_path) %>

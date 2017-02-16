@@ -81,6 +81,7 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 }
 
 #notice, #alert {
+	top: 65px;
 	position: absolute;
 	background: white;
 	padding: 1em 0;
@@ -165,7 +166,7 @@ h2 { font-size: 1.4em; padding: 5px 0 10px 0; font-weight: 100; }
 	.sign-in-btn {
 		border-radius: 4px;
 		margin-top: 20px;
-		width: 30%;
+		width: 40%;
 	}
 	
 	.form-links {

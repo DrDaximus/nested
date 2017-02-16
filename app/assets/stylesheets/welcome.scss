@@ -117,36 +117,95 @@
 	.landing-btn-submit { max-width: 240px; width: 25%; height: 41px; background: #7C7C7C; font-size: 0.8em;}
 }
 
-#example-uses {
-	font-size: 1.4em;
+// landing text
+
+.line-spaced {
+	line-height: 20px;
+	letter-spacing: 0.8px;
+	font-size: 1.1em;
+}
+
+.landing-text-container {
 	width: 70%;
 	margin-left: 15%;
-	padding: 50px 0 15px 20px;
+	overflow: hidden;
+}
+
+.landing-h1 {
+	font-size: 1.2em;
+	padding: 20px 0 0 0 ;
+	text-align: center;
+}
+
+.landing-main-text {
+	text-align: center;
+	font-weight: 100;
+	padding: 20px 0 30px 0;
+	margin: 0 auto;
+}
+.narrow { width: 340px; }
+
+.landing-main-text-center{
+	width: 50%;
+	margin-left: 25%;
+}
+
+.narrow-dots-container {
+	width: 50%;
+	display: block;
+	height: 40px;
+}
+.dots-container-right {
+	margin-left: 50%;
+}
+.wide-dots-container {
+	width: 100%;
+	display: block;
+	height: 40px;
+}
+.dots {
+	width: 35%;
+	max-width: 240px;
+	height: 40px;
+	background-size: 100% auto;
+	background-repeat: no-repeat;
+}
+.left-dots {
+	float: right;
+	background-image: url(/assets/dots-short.png);
+}
+.right-dots {
+	float: left;
+	background-image: url(/assets/dots-short.png);
+	
+}
+.wide-dots {
+	margin: 0 auto;
+	max-width: 480px;
+	background-image: url(/assets/dots-wide.png);
+}
+
+.example-image {
+	text-align: center;
+	padding: 70px;
+}
+#share-img {
+	text-align: center;
+}
+
+#welcome-footer {
+	height: 60px;
+	text-align: center;
+	color: $secondary;
+	font-size: 1em;
+	padding: 20px;
 }
 
 #trio-boxes {
-	margin-top: 20px;
-	margin-left: 15%;
+	margin: 20px 0 20px 15%;
 	width: 70%;
 	text-align: center;
 	.box { margin-top: 5px;}
-}
-
-#example-box-wrapper { 
-	padding-bottom: 50px;
-	width: 70%;
-	margin: 0 auto;
-}
-.example-boxes {
-	margin-top: 20px;
-	text-align: left;
-	font-weight: bold;
-	color: $secondary;
-	.example-head {
-		color: $main;
-		font-size: 1.4em;
-		padding: 10px 0;
-	}
 }
 
 @media only screen and (max-width: 1100px) {
@@ -185,6 +244,12 @@
 }
 
 @media only screen and (max-width:875px) {
+
+	#example-box-wrapper { 
+		padding-bottom: 50px;
+		width: 90%;
+		margin: 0 auto;
+	}	
 
 	// Email capture
 	#landing-user-form{

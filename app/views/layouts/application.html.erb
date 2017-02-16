@@ -9,21 +9,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1"> 
     <link href="https://fonts.googleapis.com/css?family=Lilita+One" rel="stylesheet"> 
   </head>
-
   <body>
-
   <header id="top_header" class="clearfix">
     <div class="wrapper">
       <div class="row">
-        <div class="col-xs-4">
+        <div class="col-xs-6">
           <%= link_to root_path do %>
             <h1 class="logo"><%= image_tag("main-logo.png", :alt => "", size: "30") %> nested<small>beta</small></h1>
           <% end %>
         </div>
-        <div class="col-xs-4">
-          <div class="main-logo"><%= image_tag("", :alt => "", size: "80") %></div> 
-        </div>
-        <div class="col-xs-4">
+        <div class="col-xs-6">
           <nav id="main_nav">
             <% if current_page?(root_path) %>
              <% if user_signed_in? %>
